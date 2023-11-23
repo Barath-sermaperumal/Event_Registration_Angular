@@ -1,11 +1,11 @@
 export interface Event {
-    id:number;
+    id?:number;
     name:String;
     description:String;
-    date:Date;
+    date:String;
     venue:String;
     host:String;
     price:number;
     availableTickets:number;
-    soldTickets:number;
+    soldTickets?:number;
 }

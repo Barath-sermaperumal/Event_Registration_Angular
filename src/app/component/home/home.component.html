@@ -71,7 +71,7 @@
       <div class="col-12">
         <div class="scrollable-container">
           <div class="scrollable-content card col-4 mx-3" style="width: 18rem;" *ngFor="let a of category">
-            <img src="../../../assets/images/Leo-705x750-Recovered-4d9c9d10-641e-11ee-a5b6-ed1746b9a431.avif" class="card-img-top" alt="..." (click)="viewCategory(a.id)">
+            <img src="../../../assets/images/Leo-705x750-Recovered-4d9c9d10-641e-11ee-a5b6-ed1746b9a431.avif" class="card-img-top" alt="..." (click)="viewCategory(a.id!)">
             <div class="card-body">
               <h5 class="card-title">{{a.name}}</h5>
             </div>
@@ -92,7 +92,7 @@
             <img src="../../../assets/images/Leo-705x750-Recovered-4d9c9d10-641e-11ee-a5b6-ed1746b9a431.avif" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{a.name}}</h5>
-              <Button routerLink="/seating" class="btn btn-primary" (click)="viewSeats(a.id)">Book Tickets</Button>
+              <Button routerLink="/seating" class="btn btn-primary" (click)="viewSeats(a.id!)">Book Tickets</Button>
             </div>
           </div>
         </div>

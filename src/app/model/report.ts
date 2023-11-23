@@ -1,6 +1,6 @@
 export interface Report {
     eventName:string,
-    localDate:string,
+    date:string,
     tickets_sold: number,
     revenue: number
 }

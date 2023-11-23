@@ -26,4 +26,43 @@ export class EventComponent {
     })
   }
 
+  singleEvent:Event={
+    name:"",
+    description:"",
+    venue:"",
+    date:"",
+    host:"",
+    price:0,
+    availableTickets:0,
+  }
+
+  getAEvent(id:number){
+    this.eventService.getAEvents(id).subscribe({
+      next: (Response:any)=>{
+        this.singleEvent=Response.data;
+      },
+      complete:()=>{},
+      error:(error:Error)=>{
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    });
+    return this.singleEvent;
+  }
+
+  addproduct(){
+    if(this.singleEvent.name!==null){
+      this.singleEvent={
+        name:"",
+        description:"",
+        venue:"",
+        date:"",
+        host:"",
+        price:0,
+        availableTickets:0,
+      }
+    }
+    return this.singleEvent;
+  }
+
 }

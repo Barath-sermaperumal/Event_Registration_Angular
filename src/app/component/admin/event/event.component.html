@@ -1,3 +1,36 @@
+<!-- Button trigger modal -->
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addproduct()">
+    Add Event
+  </button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Event</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="modal-body form">
+        <input type="text" name="name" value="{{singleEvent.name}}" class="form-control mb-3" placeholder="Event Name">
+        <input type="text" name="description" value="{{singleEvent.description}}" class="form-control mb-3" placeholder="Description">
+        <input type="text" name="date" value="{{singleEvent.date}}" class="form-control mb-3" placeholder="Date(YYYY-MM-DD)">
+        <input type="text" name="venue" value="{{singleEvent.venue}}" class="form-control mb-3" placeholder="Venue">
+        <input type="text" name="host" value="{{singleEvent.host}}" class="form-control mb-3" placeholder="Host">
+        <input type="text" name="price" value="{{singleEvent.price}}" class="form-control mb-3" placeholder="Price">
+        <input type="text" name="availableTickets" value="{{singleEvent.availableTickets}}" class="form-control" placeholder="Available Tickets">
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add Event</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
 <h1>Events Summary</h1>
 <table class="table align-middle mb-0 bg-white container">
     <thead>
@@ -42,7 +75,8 @@
                   type="button"
                   class="btn btn-link btn-rounded btn-sm fw-bold"
                   data-mdb-ripple-color="dark"
-                  >
+                  (click)="getAEvent(a.id!)"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal">
             Edit
           </button>
           <button

@@ -1,6 +1,6 @@
 export interface Category {
-    id:number;
+    id?:number;
     name:String;
-    event:Event[];
-    eventCount:number;
+    event?:Event[];
+    eventCount?:number;
 }

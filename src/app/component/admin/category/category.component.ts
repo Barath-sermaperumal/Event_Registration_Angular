@@ -27,4 +27,21 @@ export class CategoryComponent {
     });
   }
 
+  singleCategory:Category={
+    name:"dummy"
+  }
+  getACategory(id:number){
+    this.categoryService.getACategory(id).subscribe({
+      next:(response: any)=>{
+        this.singleCategory=response.data;
+      },
+      complete:()=>{},
+      error:(error:Error)=>{
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      }
+    });
+    return this.singleCategory;
+  }
+
 }

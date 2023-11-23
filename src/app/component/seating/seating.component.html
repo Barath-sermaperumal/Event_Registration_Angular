@@ -1,0 +1,35 @@
+<style>
+  .screen {
+    background-color: #202020;
+    height: 70px;
+    width: 80%;
+    margin: 15px 0;
+    transform: rotateX(-60deg);
+    box-shadow: 0 3px 10px rgba(7, 235, 136, 0.75);
+  }
+</style>
+
+<div
+  class="container d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="screen"></div>
+
+
+<div class="seating-plan mb-5">
+  <div
+    class="row d-flex justify-content-center p-1"
+    *ngFor="let row of getSeats()"
+  >
+    <div
+      class="seat"
+      *ngFor="let seat of row"
+      [ngClass]="{ occupied: seat.occupied }"
+      (click)="toggleSeat(seat)"
+    >
+      {{ seat.seatNumber }}
+    </div>
+  </div>
+
+</div>
+<button routerLink="/orderConfirmation" class="btn btn-primary mb-5 w-25" (click)="bookTickets()">Book Tickets</button>
+</div>

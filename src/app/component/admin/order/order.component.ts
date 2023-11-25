@@ -4,8 +4,7 @@ import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  templateUrl: './order.component.html'
 })
 export class OrderComponent {
   constructor(private orderService:OrderService){

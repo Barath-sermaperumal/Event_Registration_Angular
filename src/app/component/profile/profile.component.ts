@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
+import { Form, NgForm } from '@angular/forms';
 import { AppUser } from 'src/app/model/appUser';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  templateUrl: './profile.component.html'
 })
+
 export class ProfileComponent {
+
+  id:number=0;
+  name:String="";
+  username: String="";
+  gender:String="";
+  email:String="";
+  phone:number=0;
+  address:String="";
 
   constructor(private authService:AuthService){
     this.user=this.getProfile();
@@ -39,8 +48,19 @@ export class ProfileComponent {
     return this.user;
   }
 
-  updateProfile(user:AppUser){
-    this.authService.updateUser(user).subscribe({
+  updateProfile(profileForm:NgForm){
+    // let exuser:AppUser={
+    //   id:this.id,
+    //   name:this.name,
+    //   username:this.username,
+    //   email:this.email,
+    //   phone:this.phone,
+    //   gender:this.gender,
+    //   address:this.address,
+    // }
+    let formvalue:AppUser=profileForm.value;
+    this.authService.updateUser(formvalue).subscribe(
+      {
       next:(Response:any)=>{
         this.user=Response.data;
       },

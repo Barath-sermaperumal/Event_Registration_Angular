@@ -17,7 +17,7 @@ import { AuthInterceptorService } from './service/interceptor/authInterceptor.se
 import { SeatingComponent } from './component/seating/seating.component';
 import { EventDetailsComponent } from './component/event-details/event-details.component';
 import { ProfileComponent } from './component/profile/profile.component';
-import { OrderConirmationComponent } from './component/order-conirmation/order-conirmation.component';
+import { OrderConirmationComponent } from './component/order-confirmation/order-conirmation.component';
 import { UsercontrolComponent } from './component/admin/usercontrol/usercontrol.component';
 import { EventComponent } from './component/admin/event/event.component';
 import { CategoryComponent } from './component/admin/category/category.component';

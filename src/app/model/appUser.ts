@@ -1,11 +1,11 @@
 export interface AppUser {
-  id: number;
+  id?: number;
   name:String;
   username: String;
   gender:String;
   email:String;
   phone:number;
-  password: String;
+  password?: String;
   address:String;
-  role: String;
+  role?: String;
 }

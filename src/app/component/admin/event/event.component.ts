@@ -4,8 +4,7 @@ import { EventService } from 'src/app/service/event.service';
 
 @Component({
   selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  templateUrl: './event.component.html'
 })
 export class EventComponent {
   constructor(private eventService:EventService){

@@ -1,13 +1,21 @@
-.seating-plan {
-    display: grid;
+  .seating-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .row {
+    display: flex;
     gap: 5px;
   }
   
   .seat {
     width: 50px; /* Adjust as needed for your layout */
+    height: 50px; /* Adjust as needed for your layout */
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #000;
     cursor: pointer;
   }
   
@@ -17,15 +25,10 @@
     cursor: not-allowed; /* Change cursor for occupied seats */
   }
   
-  /* Media query for responsiveness */
-  @media screen and (max-width: 768px) {
-    .seat {
-      width: 40px; /* Adjust size for smaller screens */
-      height: 40px; /* Adjust size for smaller screens */
-    }
-  }
-
-  .chair{
-    color: black;
+  .disabled {
+    /* Styles for a disabled/booked seat */
+    background-color: #CCCCCC; /* Change the background color for disabled seats */
+    color: #777777; /* Change the text color for better visibility */
+    cursor: not-allowed; /* Change cursor for disabled seats */
   }
   

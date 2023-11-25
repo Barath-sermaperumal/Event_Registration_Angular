@@ -14,18 +14,30 @@
       </div>
     </div>
     <div class="col-md-7 border-right">
-      <form class="p-3 py-5">
+      <form class="p-3 py-5" #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm)">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="text-right">Profile Settings</h4>
         </div>
-
+        
         <div class="row mt-3">
+          <div class="col-md-12">
+            <input
+              type="hidden"
+              class="form-control mb-3"
+              placeholder="Name"
+              ngModel
+              name="id"
+              [ngModel]="user.id"
+            />
+          </div>
           <div class="col-md-12">
             <input
               type="text"
               class="form-control mb-3"
               placeholder="Name"
-              value="{{ user.name }}"
+              ngModel
+              name="name"
+              [ngModel]="user.name"
             />
           </div>
           <div class="col-md-12">
@@ -33,7 +45,9 @@
               type="text"
               class="form-control mb-3"
               placeholder="Username"
-              value="{{ user.username }}"
+              name="username"
+              ngModel
+              [ngModel]="user.username"
             />
           </div>
           <div class="col-md-12">
@@ -41,7 +55,9 @@
               type="email"
               class="form-control mb-3"
               placeholder="email"
-              value="{{ user.email }}"
+              name="email"
+              ngModel
+              [ngModel]="user.email"
             />
           </div>
           <div class="col-md-12">
@@ -49,7 +65,9 @@
               type="number"
               class="form-control mb-3"
               placeholder="mobile"
-              value="{{ user.phone }}"
+              name="phone"
+              ngModel
+              [ngModel]="user.phone"
             />
           </div>
           <div class="col-md-12">
@@ -57,7 +75,9 @@
               type="text"
               class="form-control mb-3"
               placeholder="gender"
-              value="{{ user.gender }}"
+              name="gender"
+              ngModel
+              [ngModel]="user.gender"
             />
           </div>
           <div class="col-md-12">
@@ -65,15 +85,16 @@
               type="text"
               class="form-control mb-3"
               placeholder="address"
-              value="{{ user.address }}"
+              name="address"
+              ngModel
+              [ngModel]="user.address"
             />
           </div>
         </div>
         <div class="mt-5 text-center">
           <button
             class="btn btn-primary profile-button"
-            type="button"
-            (click)="updateProfile(user)"
+            type="submit"
           >
             Save Profile
           </button>

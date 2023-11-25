@@ -1,4 +1,5 @@
 export interface Seat {
     seatNumber: string;
-    occupied: boolean;
+    occupied?: boolean;
+    booked:false;
 }

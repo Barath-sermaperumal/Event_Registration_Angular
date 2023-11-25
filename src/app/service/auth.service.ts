@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, Observer, map } from 'rxjs';
 import { AppResponse } from '../model/appResponse';
 import { StorageService } from './storage.service';
 import { AppUser } from '../model/appUser';
+import { Form } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -88,7 +89,7 @@ export class AuthService {
 
   // customized
   getUser():Observable<AppResponse>{
-    const id:Number=this.storageService.getLoggedInUser().id;
+    const id:Number=this.storageService.getLoggedInUser().id!;
     return this.http.get<AppResponse>(
       `http://localhost:8080/EventRegistration/API/User/profile/${id}`
     );
@@ -100,8 +101,8 @@ export class AuthService {
     );
   }
 
-  updateUser(user:AppUser):Observable<AppResponse>{
-    return this.http.put<AppResponse>(`http://localhost:8080/EventRegistration/API/User/profile`,user
-    );
+  updateUser(profileForm:AppUser):Observable<AppResponse>{
+    console.log(profileForm);
+    return this.http.put<AppResponse>('http://localhost:8080/EventRegistration/API/User/profile',profileForm);
   }
 }

@@ -30,7 +30,7 @@ export class SeatingService {
       const row: Seat[] = [];
       for (let j = 0; j < columns; j++) {
         if (seatCounter <= totalSeats) {
-          row.push({ seatNumber: `${seatCounter}`, occupied: false });
+          row.push({ seatNumber: `${seatCounter}`, occupied: false, booked:false });
           seatCounter++;
         } else {
           break;
@@ -38,7 +38,6 @@ export class SeatingService {
       }
       seatingLayout.push(row);      
     }
-
     localStorage.setItem("seatingLayout",JSON.stringify(seatingLayout));
   }
 }

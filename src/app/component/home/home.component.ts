@@ -46,11 +46,16 @@ export class HomeComponent {
 
   totalSeats:number=0;
   columns = 20;
+  bookedSeats:String[]=[];
   viewSeats(id:number){
     this.eventService.getAEvents(id).subscribe({
       next: (Response:any)=>{
         this.totalSeats=Response.data.availableTickets;
+        this.bookedSeats=Response.data.seats;
+        console.log(Response.data.seats);
+        localStorage.setItem("event",JSON.stringify(Response.data.id));
         localStorage.setItem("totalSeats",JSON.stringify(this.totalSeats));
+        localStorage.setItem("bookedSeats",JSON.stringify(this.bookedSeats));
         this.seatingService.generateSeatingLayout(this.totalSeats,this.columns)
       },
       complete:()=>{},

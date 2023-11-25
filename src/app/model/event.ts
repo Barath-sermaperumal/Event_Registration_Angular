@@ -8,4 +8,5 @@ export interface Event {
     price:number;
     availableTickets:number;
     soldTickets?:number;
+    categoryName?:string;
 }

@@ -4,8 +4,7 @@ import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-usercontrol',
-  templateUrl: './usercontrol.component.html',
-  styleUrls: ['./usercontrol.component.css']
+  templateUrl: './usercontrol.component.html'
 })
 export class UsercontrolComponent {
 

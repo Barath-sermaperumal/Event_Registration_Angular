@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   options: AnimationOptions = {
     path: '/assets/loading.json',
     rendererSettings: {
@@ -24,9 +24,22 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public loaderService: LoaderService
-  ) {}
+  ) {
+    let a:URL = new URL(window.location.href);
+    if(a.pathname==="/login" || a.pathname === "/register"){
+      this.authService.isAdmin$.subscribe((isAdmin) => {
+        this.isAdmin = isAdmin;
+      });
+  
+      this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+        this.isLoggedIn = isLoggedIn;
+      });
+  
+      this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+        this.isLoginRegister = isLoginRegister;
+      });
+    }
 
-  ngOnInit(): void {
     this.authService.isAdmin$.subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
     });
@@ -35,10 +48,15 @@ export class AppComponent implements OnInit {
       this.isLoggedIn = isLoggedIn;
     });
 
-    this.isLoginRegister = this.authService.isLoginRegister();
+    this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+      this.isLoginRegister = isLoginRegister;
+    });
   }
 
   logout(): void {
+    this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+      this.isLoginRegister = isLoginRegister;
+    });
     this.authService.logout();
   }
 }

@@ -14,13 +14,19 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Event</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form class="modal-body form">
-        <input type="text" name="name" value="{{singleCategory.name}}" class="form-control mb-3" placeholder="Event Name">
-      </form>
+      <form class="modal-body form" #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)">
+        <input type="hidden" name="id" [(ngModel)]="cat.id" class="form-control mb-3">
+        <input type="hidden" name="events" [(ngModel)]="cat.events" class="form-control mb-3">
+        <input type="text" name="name" [(ngModel)]="cat.name" class="form-control mb-3" placeholder="Category Name">
+        <div class="form-outline mb-3">
+          <label class="form-label" for="image">Choose Image</label>
+          <input type="file" class="input-file" name="image" id="image" src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/' + cat.id }}" [(ngModel)]="cat.image"  (change)="onFileChange($event)" />
+          </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Event</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="getAllCategories()">Add Event</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -57,13 +63,14 @@
                   class="btn btn-link btn-rounded btn-sm fw-bold"
                   data-mdb-ripple-color="dark"
                   data-bs-toggle="modal" data-bs-target="#exampleModal"
-                  (click)="getACategory(a.id!)"
+                  (click)="openmodal(showCategory(a.id!))"
                   >
             Edit
           </button>
           <button
-          type="button"
+          type="submit"
           class="btn btn-link btn-rounded btn-sm fw-bold"
+          (click)="deleteCategory(a.id!)"
           >
     Delete
   </button>

@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <div class="d-flex justify-content-center">
-  <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addproduct()">
+  <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add Event
   </button>
 </div>
@@ -14,19 +14,25 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Event</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form class="modal-body form">
-        <input type="text" name="name" value="{{singleEvent.name}}" class="form-control mb-3" placeholder="Event Name">
-        <input type="text" name="description" value="{{singleEvent.description}}" class="form-control mb-3" placeholder="Description">
-        <input type="text" name="date" value="{{singleEvent.date}}" class="form-control mb-3" placeholder="Date(YYYY-MM-DD)">
-        <input type="text" name="venue" value="{{singleEvent.venue}}" class="form-control mb-3" placeholder="Venue">
-        <input type="text" name="host" value="{{singleEvent.host}}" class="form-control mb-3" placeholder="Host">
-        <input type="text" name="price" value="{{singleEvent.price}}" class="form-control mb-3" placeholder="Price">
-        <input type="text" name="availableTickets" value="{{singleEvent.availableTickets}}" class="form-control" placeholder="Available Tickets">
-      </form>
-      <div class="modal-footer">
+      <form class="modal-body form" #EventForm="ngForm" (ngSubmit)="addproduct(EventForm)">
+        <input type="hidden" name="id" [(ngModel)]="singleEvent.id">
+        <input type="text" name="name" [(ngModel)]="singleEvent.name" class="form-control mb-3" placeholder="Event Name">
+        <input type="text" name="description" [(ngModel)]="singleEvent.description" class="form-control mb-3" placeholder="Description">
+        <input type="text" name="date" [(ngModel)]="singleEvent.date" class="form-control mb-3" placeholder="Date(YYYY-MM-DD)">
+        <input type="text" name="venue" [(ngModel)]="singleEvent.venue" class="form-control mb-3" placeholder="Venue">
+        <input type="text" name="host" [(ngModel)]="singleEvent.host" class="form-control mb-3" placeholder="Host">
+        <input type="text" name="price" [(ngModel)]="singleEvent.price" class="form-control mb-3" placeholder="Price">
+        <input type="text" name="availableTickets" [(ngModel)]="singleEvent.availableTickets" class="form-control mb-3" placeholder="Available Tickets">
+        <input type="text" name="categoryId" [(ngModel)]="singleEvent.categoryId" class="form-control" placeholder="Category Id">
+        <div class="form-outline mb-3">
+          <label class="form-label" for="image">Choose Image</label>
+          <input type="file" class="input-file" name="image" id="image" src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/' + singleEvent.id }}" [(ngModel)]="singleEvent.image"  (change)="onFileChange($event)" />
+          </div>
+        <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Event</button>
+        <button type="submit" class="btn btn-primary">Add Event</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -47,7 +53,7 @@
         <td>
           <div class="d-flex align-items-center">
             <img
-                src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+                src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.id }}"
                 class="rounded-circle"
                 alt=""
                 style="width: 45px; height: 45px"
@@ -75,7 +81,7 @@
                   type="button"
                   class="btn btn-link btn-rounded btn-sm fw-bold"
                   data-mdb-ripple-color="dark"
-                  (click)="getAEvent(a.id!)"
+                  (click)="openModal(getAEvent(a.id!))"
                   data-bs-toggle="modal" data-bs-target="#exampleModal">
             Edit
           </button>

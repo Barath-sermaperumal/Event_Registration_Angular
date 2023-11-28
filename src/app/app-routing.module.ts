@@ -13,6 +13,7 @@ import { EventComponent } from './component/admin/event/event.component';
 import { CategoryComponent } from './component/admin/category/category.component';
 import { OrderComponent } from './component/admin/order/order.component';
 import { UsercontrolComponent } from './component/admin/usercontrol/usercontrol.component';
+import { UserorderComponent } from './component/userorder/userorder.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'eventDetails', component:EventDetailsComponent, canActivate: [authGuard]},
   { path: 'profile', component:ProfileComponent, canActivate: [authGuard]},
   { path: 'orderConfirmation', component:OrderConirmationComponent, canActivate: [authGuard]},
+  { path: 'order', component:UserorderComponent, canActivate: [authGuard]},
   { path: '', component: HomeComponent},
   { path: 'admin', component: AdminHomeComponent, canActivate: [authGuard] },
   { path: 'adminCategory', component: CategoryComponent, canActivate: [authGuard] },

@@ -9,6 +9,7 @@ import { BookingService } from 'src/app/service/booking.service';
 import { SeatingService } from 'src/app/service/seating.service';
 import { SeatingComponent } from '../seating/seating.component';
 import { Seat } from 'src/app/model/seat';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,8 @@ export class HomeComponent {
   constructor(private eventService:EventService,
     private categoryService:CategoryService,
     private bookingService:BookingService,
-    private seatingService:SeatingService) {
+    private seatingService:SeatingService,
+    private dataService: DataService) {
     eventService.getAllEvents().subscribe({
       next: (response: any) => {
         this.event = response.data;
@@ -53,7 +55,7 @@ export class HomeComponent {
         this.totalSeats=Response.data.availableTickets;
         this.bookedSeats=Response.data.seats;
         console.log(Response.data.seats);
-        localStorage.setItem("event",JSON.stringify(Response.data.id));
+        localStorage.setItem("event",JSON.stringify(Response.data));
         localStorage.setItem("totalSeats",JSON.stringify(this.totalSeats));
         localStorage.setItem("bookedSeats",JSON.stringify(this.bookedSeats));
         this.seatingService.generateSeatingLayout(this.totalSeats,this.columns)
@@ -66,10 +68,12 @@ export class HomeComponent {
     });
   }
 
+  e:Event[]=[]
   viewCategory(id:number){
     this.categoryService.getACategory(id).subscribe({
       next:(Response:any)=>{
-        
+        this.dataService.dataArray=Response.data;    
+        localStorage.setItem("eventDetail",JSON.stringify(Response.data));
       },
       complete:()=>{},
       error:(error:Error)=>{
@@ -77,5 +81,5 @@ export class HomeComponent {
         console.log('Name:', error.name);
       }
     });
-  }
+  }  
 }

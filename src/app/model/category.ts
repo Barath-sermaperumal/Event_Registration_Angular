@@ -1,6 +1,7 @@
 export interface Category {
+    image?:String;
     id?:number;
     name:String;
-    event?:Event[];
+    events?:Event[];
     eventsCount?:number;
 }

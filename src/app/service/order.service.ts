@@ -15,4 +15,11 @@ export class OrderService {
       'http://localhost:8080/EventRegistration/API/Admin/Order'
     );
   }
+
+  getUserOrder():Observable<AppResponse>{
+    let id:Number=JSON.parse(localStorage.getItem("loggedInUser")!).id;
+    return this.http.get<AppResponse>(
+      `http://localhost:8080/EventRegistration/API/User/Order/${id}`
+    )
+  }
 }

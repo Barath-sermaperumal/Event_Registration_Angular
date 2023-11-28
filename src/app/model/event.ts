@@ -1,5 +1,8 @@
+import { Order } from "./order";
+
 export interface Event {
     id?:number;
+    image:String;
     name:String;
     description:String;
     date:String;
@@ -9,4 +12,7 @@ export interface Event {
     availableTickets:number;
     soldTickets?:number;
     categoryName?:string;
+    categoryId?:number;
+    order?:Order[];
+    seats?:String[]
 }

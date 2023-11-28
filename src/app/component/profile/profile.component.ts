@@ -49,15 +49,6 @@ export class ProfileComponent {
   }
 
   updateProfile(profileForm:NgForm){
-    // let exuser:AppUser={
-    //   id:this.id,
-    //   name:this.name,
-    //   username:this.username,
-    //   email:this.email,
-    //   phone:this.phone,
-    //   gender:this.gender,
-    //   address:this.address,
-    // }
     let formvalue:AppUser=profileForm.value;
     this.authService.updateUser(formvalue).subscribe(
       {

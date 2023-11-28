@@ -16,9 +16,11 @@ export class AuthService {
   private isAdminSubject = new BehaviorSubject<boolean>(false);
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private isStaffSubject = new BehaviorSubject<boolean>(false);
+  private isLoginRegisterSubject = new BehaviorSubject<boolean>(false);
  
   isAdmin$: Observable<boolean> = this.isAdminSubject.asObservable();
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+  isLoginRegister$: Observable<boolean> = this.isLoginRegisterSubject.asObservable();
   isStaff$: Observable<boolean> = this.isStaffSubject.asObservable();
  
   constructor(
@@ -33,7 +35,7 @@ export class AuthService {
  
   login(login: Login): Observable<AppResponse> {
     return this.http
-      .post<AppResponse>(`${urlEndpoint.baseUrl}/auth/login`, login)
+      .post<AppResponse>(`http://localhost:8080/api/auth/login`, login)
       .pipe(
         map((user) => {
           this.storageService.setAuthData(
@@ -44,14 +46,7 @@ export class AuthService {
       );
   }
  
-  isLoginRegister():boolean{
-    const a=new URL(window.location.href);
-    let pathname:String=a.pathname;
-    if(pathname==="/login" || pathname==="/register"){
-      return false;
-    }
-    return true;
-  }
+
 
   logout() {
     this.storageService.removeAuthData();
@@ -69,6 +64,10 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.isLoggedInSubject.value;
+  }
+
+  isLoginRegister():boolean{
+    return this.isLoginRegisterSubject.value;
   }
  
   setLoggedIn(user: AppUser): void {
@@ -104,5 +103,11 @@ export class AuthService {
   updateUser(profileForm:AppUser):Observable<AppResponse>{
     console.log(profileForm);
     return this.http.put<AppResponse>('http://localhost:8080/EventRegistration/API/User/profile',profileForm);
+  }
+
+  registerUser(user:AppUser):Observable<AppResponse>{
+    return this.http.post<AppResponse>(
+      'http://localhost:8080/api/auth/register',user
+    )
   }
 }

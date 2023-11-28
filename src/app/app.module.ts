@@ -22,6 +22,8 @@ import { UsercontrolComponent } from './component/admin/usercontrol/usercontrol.
 import { EventComponent } from './component/admin/event/event.component';
 import { CategoryComponent } from './component/admin/category/category.component';
 import { OrderComponent } from './component/admin/order/order.component';
+import { UserorderComponent } from './component/userorder/userorder.component';
+import { DataService } from './service/data.service';
 
 export function playerFactory() {
   return player;
@@ -42,6 +44,7 @@ export function playerFactory() {
     EventComponent,
     CategoryComponent,
     OrderComponent,
+    UserorderComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ export function playerFactory() {
       useClass: AuthInterceptorService,
       multi: true,
     },
+    DataService,
   ],
   bootstrap: [AppComponent],
 })

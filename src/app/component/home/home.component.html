@@ -1,11 +1,4 @@
 <style>
-  .containers{
-    background-color: #f6f6f6;    
-  }
-
-  .blu{
-    background-color: #002970;
-  }
   .h-quote{
     font-weight: 600;
     padding-right: 5px;
@@ -36,12 +29,12 @@
 }
 
 </style>
-<div class="containers">
-  <p class="d-flex justify-content-center h-quote m-0 p-2">Get All Your Tickets at one place &#128516;</p>
+<div class="containers bg-body-tertiary">
+  <p class="d-flex justify-content-center bg-body-tertiary h-quote m-0 p-2">Get All Your Tickets at one place &#128516;</p>
   <!-- corousel -->
   <div class="mb-5">
-  <p class="blu p-5 mb-0"></p>
-  <p class="blu p-5 mb-0 c-p w-100"></p>
+  <p class="bg-normal p-5 mb-0"></p>
+  <p class="bg-normal p-5 mb-0 c-p w-100"></p>
   <div id="carouselExampleSlidesOnly" class="carousel slide c-corousel" data-bs-ride="carousel">
     <div class="carousel-inner container">
       <div class="carousel-item active">
@@ -71,10 +64,12 @@
       <div class="col-12">
         <div class="scrollable-container">
           <div class="scrollable-content card col-4 mx-3" style="width: 18rem;" *ngFor="let a of category">
-            <img src="../../../assets/images/Leo-705x750-Recovered-4d9c9d10-641e-11ee-a5b6-ed1746b9a431.avif" class="card-img-top" alt="..." (click)="viewCategory(a.id!)">
-            <div class="card-body">
-              <h5 class="card-title">{{a.name}}</h5>
-            </div>
+            <a (click)="viewCategory(a.id!)" routerLink="/eventDetails" class="text-decoration-none">
+              <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/' + a.id }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-black">{{a.name}}</h5>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -89,7 +84,7 @@
       <div class="col-12">
         <div class="scrollable-container">
           <div class="scrollable-content card col-4 mx-3" style="width: 18rem;" *ngFor="let a of event">
-            <img src="../../../assets/images/Leo-705x750-Recovered-4d9c9d10-641e-11ee-a5b6-ed1746b9a431.avif" class="card-img-top" alt="...">
+            <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.id }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{a.name}}</h5>
               <Button routerLink="/seating" class="btn btn-primary" (click)="viewSeats(a.id!)">Book Tickets</Button>

@@ -14,25 +14,193 @@
 >
   <div class="screen"></div>
 
-<div class="seating-plan mb-5">
-  <div
-    class="row d-flex justify-content-center"
-    *ngFor="let row of getSeats()"
-  >
+  <div class="seating-plan mb-5">
     <div
-      class="seat"
-      *ngFor="let seat of row"
-      [ngClass]="{
-        'occupied': seat.occupied,
-        'disabled': isSeatBooked(seat.seatNumber)
-      }"
-      (click)="toggleSeat(seat)"
+      class="row d-flex justify-content-center"
+      *ngFor="let row of getSeats()"
     >
-    {{seat.seatNumber}}
-
+      <div
+        class="seat"
+        *ngFor="let seat of row"
+        [ngClass]="{
+          occupied: seat.occupied,
+          disabled: isSeatBooked(seat.seatNumber)
+        }"
+        (click)="toggleSeat(seat)"
+      >
+        {{ seat.seatNumber }}
+      </div>
     </div>
   </div>
+  <button
+    class="btn btn-primary mb-5 w-25"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    (click)="bookTickets()"
+  >
+    Book Tickets
+  </button>
+</div>
 
+<!-- modal 2 -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>orderConfirmed</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#reciept"
+        >Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
-<button routerLink="/orderConfirmation" class="btn btn-primary mb-5 w-25" (click)="bookTickets()">Book Tickets</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="reciept"
+  tabindex="-1"
+  aria-labelledby="recieptLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="recieptLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+          <div class="col-6">
+            <ng-lottie [options]="options" height="40vh"></ng-lottie>
+          </div>
+        </div>
+
+          <div class="invoice p-5">
+            <h5>Your order Confirmed!</h5>
+            <div
+              class="payment border-top mt-3 mb-3 border-bottom table-responsive"
+            >
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="py-2">
+                        <span class="d-block text-muted">Order Date</span>
+                        <span>12 Jan,2018</span>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="py-2">
+                        <span class="d-block text-muted">Order No</span>
+                        <span>MT12332345</span>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="py-2">
+                        <span class="d-block text-muted">Payment</span>
+                        <span
+                          ><img
+                            src="https://img.icons8.com/color/48/000000/mastercard.png"
+                            width="20"
+                        /></span>
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="product border-bottom table-responsive">
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td width="20%">
+                      <img src="https://i.imgur.com/u11K1qd.jpg" width="90" />
+                    </td>
+
+                    <td width="60%">
+                      <span class="font-weight-bold">{{getorder().count}}</span>
+                      <div class="product-qty">
+                        <span class="d-block">seat count:{{getorder().count}}</span>
+                        <span>Date:Dark</span>
+                      </div>
+                    </td>
+                    <td width="20%">
+                      <div class="text-right">
+                        <span class="font-weight-bold">Price: ${{getorder().totalPrice! * getorder().count!}}</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row d-flex justify-content-end">
+              <div class="col-md-5">
+                <table class="table table-borderless">
+                  <tbody class="totals">
+                    <tr class="border-top border-bottom">
+                      <td>
+                        <div class="text-left">
+                          <span class="font-weight-bold">Subtotal</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="text-right">
+                          <span class="font-weight-bold">$238.50</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          <div class="d-flex justify-content-between footer p-3">
+            <span>Need Help? visit our <a href="#"> help center</a></span>
+            <span>12 June, 2020</span>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" routerLink="/order">Download Receipt</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+

@@ -1,43 +1,56 @@
 <section class="vh-100">
-  <div class="container py-5 h-100">
+  <div class="container h-100">
     <div class="row d-flex align-items-center justify-content-center h-100">
       <div class="col-6">
-        <ng-lottie [options]="options"></ng-lottie>
+        <ng-lottie [options]="options" height="80vh"></ng-lottie>
       </div>
-      <div class="col-6">
-        <h2 class="display-4 text-primary">Register</h2>
-        <form>
+      <div class="card shadow col-6 px-5 pt-3 d-flex justify-content-center">
+        <div>
+          <h2 class="display-4 text-primary text-center mb-4">Register</h2>
+        </div>
+          <form #RegisterForm="ngForm" class="d-flex flex-column justify-content-center align-items-center" (ngSubmit)="register(RegisterForm)">
           <!-- Username input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="username">Username</label>
-            <input type="text" id="username" class="form-control" />
-            <div class="error">Error</div>
+          <div class="form-outline mb-4 col-12">
+            <input type="text" id="name" class="form-control"               
+            name="name"
+            placeholder="Enter your Name"
+            [(ngModel)]="user.name"/>
+          </div>
+
+          <div class="form-outline mb-4 col-12">
+            <input type="text" id="username" class="form-control"               
+            name="username"
+            placeholder="Enter your username"
+            [(ngModel)]="user.username"/>
           </div>
 
           <!-- Name input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="name">Name</label>
-            <input type="text" id="name" class="form-control" />
-            <div class="error">Error</div>
+          <div class="form-outline mb-4 col-12">
+            <input type="email" id="email" class="form-control" 
+            name="email"
+            placeholder="Enter your Email"
+            [(ngModel)]="user.email"/>
           </div>
 
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="password">Password</label>
-            <input type="password" id="password" class="form-control" />
-            <div class="error">Error</div>
+          <div class="row">
+                      <!-- Password input -->
+          <div class="form-outline mb-3 col-6">
+            <input type="password" id="password" class="form-control" 
+            name="password"
+            placeholder="Password"
+            [(ngModel)]="user.password"/>
           </div>
 
           <!-- Confirm Password input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="confirmPassword"
-              >Confirm Password</label
-            >
-            <input type="password" id="confirmPassword" class="form-control" />
-            <div class="error">Error</div>
+          <div class="form-outline mb-3 col-6">
+            <input type="password" id="confirmPassword" class="form-control" 
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            [(ngModel)]="user.confirmPassword" />
+          </div>
           </div>
 
-          <div class="d-flex align-items-center mb-4">
+          <div class="d-flex align-items-center mb-2">
             <span>Already registered?</span>
             <a
               routerLink="/login"
@@ -46,12 +59,19 @@
             >
           </div>
 
+          <p
+          class="error"
+          [ngClass]="error.length > 0 ? 'visible' : 'invisible'">
+          {{ error }}
+        </p>
+
           <!-- Submit button -->
-          <div class="d-grid gap-2 mb-5">
+          <div class="d-grid gap-2 mb-5 col-5">
             <button type="submit" class="btn btn-primary">Register</button>
           </div>
         </form>
       </div>
+      
     </div>
   </div>
 </section>

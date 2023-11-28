@@ -1,12 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Dancing+Script&display=swap');
 
 :root {
   --primary-50: hsl(0, 0%, 100%);
-  --primary-100: #fef3c7;
+  --primary-100: #e8e8e8;
   --primary-300: rgb(70,252,201);
-  --primary-500: #00baf2;
-  --primary-600: #002970;
-  --primary-700: #002970;
+  /* --primary-500: #00baf2; */
+  --primary-500: linear-gradient(111deg, rgba(82,80,255,1) 5%, rgba(219,113,255,1) 83%);
+  /* --primary-600: #002970; */
+  --primary-600:rgba(82,80,255,1);
+  --primary-700: #eb79ff;
   --primary-900: #78350f;
   --secondary-100: #f1f5f9;
   --secondary-500: #64748b;
@@ -46,6 +48,10 @@ body {
   color: var(--secondary-100);
   background: var(--primary-500);
   border: none;
+}
+
+.bg-normal{
+  background-color: var(--primary-700) !important;
 }
 
 .btn-primary:hover,
@@ -92,7 +98,7 @@ body {
 }
 
 .border {
-  border-right-color: var(--primary-300) !important;
+  border-right-color: var(--primary-600) !important;
 }
 
 /* background color */
@@ -102,6 +108,10 @@ body {
 
 .bg-normal{
   background-color: white;
+}
+
+.bg-primary{
+  background-color: var(--primary-500);
 }
 
 /* Custom */
@@ -170,3 +180,7 @@ body {
   left: 45%;
 }
 
+.card-header{
+  background: var(--primary-500);
+  border: none;
+}

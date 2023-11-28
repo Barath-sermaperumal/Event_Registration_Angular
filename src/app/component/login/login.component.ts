@@ -19,7 +19,26 @@ export class LoginComponent {
   password: String = '';
   error: String = '';
 
-  constructor(private authService: AuthService) {}
+  isAdmin: boolean = false;
+  isLoggedIn: boolean = false;
+  isLoginRegister: boolean = false;
+
+  constructor(private authService: AuthService) {
+    let a:URL = new URL(window.location.href);
+    if(a.pathname==="/login" || a.pathname === "/register"){
+      this.authService.isAdmin$.subscribe((isAdmin) => {
+        this.isAdmin = isAdmin;
+      });
+  
+      this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+        this.isLoggedIn = isLoggedIn;
+      });
+  
+      this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+        this.isLoginRegister = isLoginRegister;
+      });
+    }
+  }
 
   login(_loginForm: Form): void {
     let login: Login = {

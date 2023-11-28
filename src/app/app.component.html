@@ -4,21 +4,19 @@
   }
   .loginActions{
     border-radius: 20px;
-    background: #00baf2;
-    padding-left: 12px;
-    font-size: 15px;
   }
 </style>
 
-<div *ngIf="!isLoggedIn">
-  <div class="row" *ngIf="isLoginRegister">
-    <header class="navbar p-4">
+<div *ngIf="!isLoggedIn" class="container-fluid vh-100 d-flex flex-column align-items-around g-0">
+  <div class="row">
+    <header class="navbar">
       <div>
-        <a class="navbar-brand px-3 text-black" routerLink="/"><img src="../assets/images/logo.svg"></a>
-        <a class="navbar-brand text-black" routerLink="/">Home</a>
+        <a class="navbar-brand px-3 text-black" routerLink="/"><img src="../assets/images/Logo.png"  height="70px"></a>
       </div>
-      <div class="navbar-nav text-white" (click)="logout()" role="button">
-        <i class="fa-solid fa-user text-black"></i>
+      <div class="navbar-nav px-5 d-flex text-white" routerLink="/login" role="button">
+        <div class="d-flex justify-content-end loginActions btn px-3 p-2 btn-primary">
+          <span>Sign In</span>
+        <i class="fa-solid fa-right-from-bracket text-white p-1"></i></div>
       </div>
     </header>
   </div>
@@ -27,16 +25,17 @@
 
 <div *ngIf="isLoggedIn" class="container-fluid vh-100 d-flex flex-column align-items-around g-0">
   <div class="row">
-    <header class="navbar p-4">
+    <header class="navbar">
       <div>
-        <a class="navbar-brand px-3 text-black" routerLink="/"><img src="../assets/images/logo.svg"></a>
+        <a class="navbar-brand px-3 text-black" routerLink="/"><img src="../assets/images/Logo.png"  height="70px"></a>
         <a class="navbar-brand text-black" routerLink="/">Home</a>
-        <a class="navbar-brand text-black" routerLink="/orderConfirmation">Orders</a>
+        <a class="navbar-brand text-black" routerLink="/order">Orders</a>
         <a class="navbar-brand text-black" routerLink="/profile">Profile</a>
       </div>
-      <div class="navbar-nav px-5 d-flex text-white " (click)="logout()" role="button">
-        <div class="d-flex justify-content-end loginActions"><span>Log Out</span>
-        <i class="fa-solid fa-solid fa-right-from-bracket text-black"></i></div>
+      <div class="navbar-nav px-5 d-flex text-white" (click)="logout()" role="button">
+        <div class="d-flex justify-content-end loginActions btn px-3 p-2 btn-primary">
+          <span>Log Out</span>
+        <i class="fa-solid fa-right-from-bracket text-white p-1"></i></div>
       </div>
     </header>
   </div>

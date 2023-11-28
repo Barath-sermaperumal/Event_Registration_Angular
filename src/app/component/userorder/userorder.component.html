@@ -1,0 +1,64 @@
+<style>
+  .gradient-custom {
+/* fallback for old browsers */
+background: #cd9cf2;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+}
+</style>
+<section class="">
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-11">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-5">
+            <h5 class="text-white mb-0">Thanks for your Orders, <span >{{name}}</span>!</h5>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-center" *ngIf="order.length==0">
+              <div class="col-6">
+                <ng-lottie [options]="options" height="70vh"></ng-lottie>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+            </div>
+            <div class="card shadow-0 border mb-4" *ngFor="let a of order">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.eventId }}"
+                      class="img-fluid" alt="Phone">
+                  </div>
+                  <div class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center">
+                    <p class="text-muted mb-0">Event</p>
+                    <p class="text-black mb-0">{{a.eventName}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center">
+                    <p class="text-muted mb-0">Date</p>
+                    <p class="text-black mb-0">{{a.date}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center">
+                    <p class="text-muted mb-0">Count</p>
+                    <p class="text-black mb-0">{{a.bookedSeatsString?.length}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center">
+                    <p class="text-muted mb-0">Seats({{a.count}})</p>
+                    <p class="text-black mb-0">{{a.bookedSeatsString}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center">
+                    <p class="text-muted mb-0">Price</p>
+                    <p class="text-black mb-0">${{a.totalPrice}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AppResponse } from '../model/appResponse';
 import { Seat } from '../model/seat';
 import { EventService } from './event.service';
+import { Order } from '../model/order';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,11 @@ export class SeatingService {
       seatingLayout.push(row);      
     }
     localStorage.setItem("seatingLayout",JSON.stringify(seatingLayout));
+  }
+
+  deleteSeats(id:number):Observable<AppResponse>{
+    return this.http.delete<AppResponse>(
+      `http://localhost:8080/EventRegistration/API/User/order/delete/${id}`
+    )
   }
 }

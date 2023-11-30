@@ -9,6 +9,7 @@ export interface Orderconfirmation {
     count?:number;
     totalPrice?:number;
     date?:String;
+    orderDate?:Date;
     bookedSeats?:Seat[];
     bookedSeatsString?:String[];
 }

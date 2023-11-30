@@ -79,7 +79,7 @@ export class AuthService {
       if (route === null) route = "";
       this.router.navigate(["/" + route], { replaceUrl: true });
     } else if (user.role === CONSTANT.ADMIN) {
-      if (route === null) route = "";
+      if (route === null) route = "admin";
       this.isAdminSubject.next(true);
       this.router.navigate(["/" + route], { replaceUrl: true });
     }

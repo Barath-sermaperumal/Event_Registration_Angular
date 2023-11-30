@@ -3,7 +3,7 @@
 :root {
   --primary-50: hsl(0, 0%, 100%);
   --primary-100: #e8e8e8;
-  --primary-300: rgb(70,252,201);
+  --primary-300: linear-gradient(111deg, rgba(82,80,255,1) 5%, rgba(219,113,255,1) 83%);
   /* --primary-500: #00baf2; */
   --primary-500: linear-gradient(111deg, rgba(82,80,255,1) 5%, rgba(219,113,255,1) 83%);
   /* --primary-600: #002970; */
@@ -25,13 +25,32 @@
 
 
 body {
-  font-family: "Exo 2", sans-serif;
-  background-color: var(--primary-50);
+  font-family: "Roboto,sans-serif";
+  background-color: #F5F5F5;
+  overflow-x: hidden;
+}
+
+.bod{
+  background-color: #F5F5F5;
+}
+
+.heading{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.navbar-brand{
+  font-size: 24px;
+  font-weight: 500;
 }
 
 /* text */
 .text-primary {
   color: var(--primary-500) !important;
+}
+
+.bg-background {
+  background: var(--primary-500);
 }
 
 /* background */
@@ -97,10 +116,6 @@ body {
   color: var(--primary-500);
 }
 
-.border {
-  border-right-color: var(--primary-600) !important;
-}
-
 /* background color */
 .bg-body-tertiary {
   background-color: var(--primary-100) !important;
@@ -137,13 +152,19 @@ body {
 }
 
 .sideBarItem,
-.sideBarItem > a {
+.sideBarItem > a 
+{
   color: var(--primary-500);
   padding: 8px;
 }
 
 .sideBarItem > a:hover {
   color: var(--primary-500);
+}
+
+.active{
+  background-color: white;
+  color: black;
 }
 
 .sideBarActive > .fa-solid {
@@ -183,4 +204,44 @@ body {
 .card-header{
   background: var(--primary-500);
   border: none;
+}
+
+.navbar{
+  background-color: #333545;
+  overflow-x: hidden !important;
+}
+
+.header{
+  overflow-x: hidden !important;
+}
+
+*::-webkit-scrollbar {
+  width: 0px !important;
+  background-color: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 0px !important;
+  background-color: transparent !important;
+  border-radius: 0px !important;
+}
+
+*::-webkit-scrollbar:horizontal {
+  width: 0px !important;
+  background-color: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb:horizontal {
+  width: 0px !important;
+  background-color: transparent !important;
+  border-radius: 0px;
+}
+
+.seprator{
+  height: 1px;
+  background: var(--primary-300);
+}
+
+.sidebarPosition{
+  position: fixed;
 }

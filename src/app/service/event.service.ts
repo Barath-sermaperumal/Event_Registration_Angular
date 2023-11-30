@@ -26,5 +26,11 @@ export class EventService {
       'http://localhost:8080/EventRegistration/API/Admin/Event',event
     );
   }
+
+  deleteEvent(id:number):Observable<AppResponse>{
+    return this.http.delete<AppResponse>(
+      `http://localhost:8080/EventRegistration/API/Admin/Event/delete/${id}`
+    )
+  }
   
 }

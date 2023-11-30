@@ -20,19 +20,28 @@ import { AnimationOptions } from 'ngx-lottie';
 export class SeatingComponent {
 localStorage: any;
 JSON: any;
+
+isToggled: boolean = false;
+
+toggleClass(event: any) {
+  this.isToggled = event.target.checked;
+}
+
   // Default total number of seats
  // Default number of columns
 
   constructor(private seatingService:SeatingService,private bookingService:BookingService) {
-    this.getSeats();
     this.getBookedSeats();
+    this.localSeats=this.getSeats();
   }
 
   options: AnimationOptions = {
     path: '/assets/booked.json',
   };
 
+
   occupiedSeat:Seat[]=[]
+
   toggleSeat(seat: Seat) { 
     const bookdSeats = this.getBookedSeats();
     if (!bookdSeats.includes(seat.seatNumber)) {
@@ -47,7 +56,11 @@ JSON: any;
         this.occupiedSeat=this.occupiedSeat.concat(newseat);     
       }
     }
-    return seat.occupied;
+    return seat;
+  }
+
+  occupied(seat:Seat){
+    seat.occupied=!seat.occupied;
   }
 
   isSeatBooked(seatNumber: string): boolean {
@@ -57,6 +70,9 @@ JSON: any;
 
   seatingLayout:Seat[][]=[];
   bookedSeatsts:String[]=this.getBookedSeats();
+
+  localSeats:Seat[][]=this.getSeats();
+
   getSeats(){
     return JSON.parse(localStorage.getItem("seatingLayout")!);
   }
@@ -88,11 +104,32 @@ JSON: any;
   }
 
   order:Orderconfirmation={};
-
+  currentDate: Date=new Date();
   getorder(){
     this.order=JSON.parse(localStorage.getItem("orderconfirmation")!);
-    console.log(this.order);
+    this.order.orderDate=this.currentDate;
     return this.order;
   }
 
+  downloadReceipt() {
+    // Create a sample receipt content (you can replace this with your actual receipt data)
+    const receiptContent = "Order ID: \nDate: "+this.currentDate+"\nTotal: "+(this.getorder().totalPrice! * this.getorder().count!)+"\n\nThank you for your order!";
+
+    // Create a Blob containing the receipt content
+    const blob = new Blob([receiptContent], { type: 'text/plain' });
+
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'order_receipt.txt'; // Set the filename for the downloaded file
+
+    // Append the link to the document body and simulate a click to trigger the download
+    document.body.appendChild(link);
+    link.click();
+
+    // Cleanup: remove the temporary link element
+    document.body.removeChild(link);
+  }
+
+  
 }

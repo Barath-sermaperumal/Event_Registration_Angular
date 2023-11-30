@@ -41,7 +41,7 @@ background: linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 
                     <p class="text-muted mb-0">Date</p>
                     <p class="text-black mb-0">{{a.date}}</p>
                   </div>
-                  <div class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center">
+                  <div class="col-md-1 text-center d-flex flex-column justify-content-center align-items-center">
                     <p class="text-muted mb-0">Count</p>
                     <p class="text-black mb-0">{{a.bookedSeatsString?.length}}</p>
                   </div>
@@ -52,6 +52,9 @@ background: linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 
                   <div class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center">
                     <p class="text-muted mb-0">Price</p>
                     <p class="text-black mb-0">${{a.totalPrice}}</p>
+                  </div>
+                  <div class="col-md-1 text-center d-flex flex-column justify-content-center align-items-center">
+                    <a class="btn btn-primary" (click)="deleteOrder(a)"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
                   </div>
                 </div>
               </div>

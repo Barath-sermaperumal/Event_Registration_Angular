@@ -9,4 +9,5 @@ export interface AppUser {
   address?:String;
   role?: String;
   confirmPassword?:String;
+  image:String;
 }

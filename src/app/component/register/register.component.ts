@@ -29,8 +29,10 @@ error: string = '';
       username:"",
       email:"",
       password:"",
-      confirmPassword:""
+      confirmPassword:"",
+      image:""
     }
+    
   register(form:NgForm){
     let newUser:AppUser=form.value;
     this.authService.registerUser(newUser).subscribe({

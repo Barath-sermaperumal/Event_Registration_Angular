@@ -49,7 +49,9 @@ export class HomeComponent {
   totalSeats:number=0;
   columns = 20;
   bookedSeats:String[]=[];
-  viewSeats(id:number){
+  viewSeats(a:Event){
+    this.singleEvent=a;
+    let id:number=a.id!;
     this.eventService.getAEvents(id).subscribe({
       next: (Response:any)=>{
         this.totalSeats=Response.data.availableTickets;
@@ -82,4 +84,21 @@ export class HomeComponent {
       }
     });
   }  
+
+  singleEvent:Event={
+    id:0,
+    name:"",
+    image:"",
+    description:"",
+    venue:"",
+    date:"",
+    host:"",
+    price:0,
+    availableTickets:0,
+    categoryId:0
+  }
+
+  getSeats(){
+    return JSON.parse(localStorage.getItem("seatingLayout")!);
+  }
 }

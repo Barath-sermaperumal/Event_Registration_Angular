@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { AnimationOptions } from 'ngx-lottie';
 import { Order } from 'src/app/model/order';
+import { Orderconfirmation } from 'src/app/model/orderconfirmation';
 import { OrderService } from 'src/app/service/order.service';
+import { SeatingService } from 'src/app/service/seating.service';
 
 @Component({
   selector: 'app-userorder',
   templateUrl: './userorder.component.html'
 })
 export class UserorderComponent {
-  constructor(private orderService:OrderService){
+  constructor(private orderService:OrderService,private seatingService:SeatingService){
     this.getUserOrder();
   }
 
@@ -33,4 +35,15 @@ export class UserorderComponent {
     return this.order;
   }
 
+  deleteOrder(a:Order){
+    this.seatingService.deleteSeats(a.id).subscribe({
+      next:(Response:any)=>{
+      },
+      complete:()=>{},
+      error:()=>{
+        console.log("Error"); 
+      }
+    });
+    this.getUserOrder();
+  }
 }

@@ -98,6 +98,18 @@ export class EventComponent {
     return this.singleEvent;
   }
 
+  deleteEvent(id:number){
+    this.eventService.deleteEvent(id).subscribe({
+      next: (Response:any)=>{
+      },
+      complete:()=>{},
+      error:(error:Error)=>{
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    })
+  }
+
   file='';
   onFileChange(event: any) {
     const fileInput = event.target;

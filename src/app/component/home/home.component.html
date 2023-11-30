@@ -6,9 +6,6 @@
   .c-img{
     border-radius: 16px;
   }
-  .c-p{
-    position: absolute;
-  }
   .c-corousel{
     position: relative;
   }
@@ -29,46 +26,35 @@
 }
 
 </style>
-<div class="containers bg-body-tertiary">
-  <p class="d-flex justify-content-center bg-body-tertiary h-quote m-0 p-2">Get All Your Tickets at one place &#128516;</p>
+<div class="containers">
+  <p class="d-flex justify-content-center bg-body-tertiary h-quote m-0 p-2">Get All Your Tickets at one place 😉</p>
   <!-- corousel -->
   <div class="mb-5">
-  <p class="bg-normal p-5 mb-0"></p>
-  <p class="bg-normal p-5 mb-0 c-p w-100"></p>
   <div id="carouselExampleSlidesOnly" class="carousel slide c-corousel" data-bs-ride="carousel">
-    <div class="carousel-inner container">
+    <div class="carousel-inner ">
       <div class="carousel-item active">
-        <img src="../../../assets/images/1694439926465.avif" class="d-block w-100 c-img" alt="...">
+        <img src="../../../assets/images/Corousel/gajendraverma.avif" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="../../../assets/images/1699463384090.avif" class="d-block w-100 c-img" alt="...">
+        <img src="../../../assets/images/Corousel/aavaadingi.avif" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="../../../assets/images/1699556808968.avif" class="d-block w-100 c-img" alt="...">
+        <img src="../../../assets/images/Corousel/nilavemalare.avif" class="d-block w-100 c-img" alt="...">
       </div>
     </div>
   </div>
 </div>
   <!-- corousel -->
 
-  <!-- search -->
-  <div class="mb-3 p-3 containers search-area">
-    <input type="text" class="form-control" placeholder="search">
-  </div>
-  <!-- search -->
-
   <!-- Categories -->
-  <div class="container">
-    <h3 class="container mb-3">Categories</h3>
+  <div class="container mb-5">
+    <h3 class="container mb-3 heading">GENRES</h3>
     <div class="row">
       <div class="col-12">
         <div class="scrollable-container">
-          <div class="scrollable-content card col-4 mx-3" style="width: 18rem;" *ngFor="let a of category">
+          <div class="scrollable-content card shadow col-4 mx-3" style="width: 18rem;" *ngFor="let a of category">
             <a (click)="viewCategory(a.id!)" routerLink="/eventDetails" class="text-decoration-none">
               <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/' + a.id }}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-black">{{a.name}}</h5>
-              </div>
             </a>
           </div>
         </div>
@@ -78,16 +64,19 @@
   <!-- Categories -->
 
   <!-- products -->
-  <div class="container">
-    <h3 class="container mb-3">Events</h3>
+  <div class="container mb-3">
+    <h3 class="container mb-3 heading">Events</h3>
     <div class="row">
       <div class="col-12">
         <div class="scrollable-container">
-          <div class="scrollable-content card col-4 mx-3" style="width: 18rem;" *ngFor="let a of event">
+          <div class="scrollable-content shadow card col-4 mx-3" style="width: 18rem;" *ngFor="let a of event">
             <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.id }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{a.name}}</h5>
-              <Button routerLink="/seating" class="btn btn-primary" (click)="viewSeats(a.id!)">Book Tickets</Button>
+              <Button  class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="viewSeats(a)">View Event</Button>
             </div>
           </div>
         </div>
@@ -96,3 +85,58 @@
   </div>
   <!-- products -->
 </div>
+
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Event Details</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body p-5">
+        <div>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + singleEvent.id }}"
+              class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+          </div>
+          <h5 class="mb-0"><b>Event: </b>{{singleEvent.name}}</h5>
+          <h5 class="mb-0"><b>Description: </b> {{singleEvent.description}}</h5>
+          <h5 class="mb-0"><b>Venue: </b> {{singleEvent.venue}}</h5>
+          <h5 class="mb-0"><b>Date: </b> {{singleEvent.date}}</h5>
+          <h5 class="mb-0"><b>Price: </b> {{singleEvent.price}}</h5>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary"
+        data-bs-dismiss="modal"
+        routerLink="/seating"
+        (click)="getSeats()"
+        >Book Tickets</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-body-tertiary text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2020 Copyright:
+    <a class="text-body" target="_blank" href="https://github.com/Barath-sermaperumal">CodeWithBubblu.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>

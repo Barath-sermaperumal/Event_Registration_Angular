@@ -1,4 +1,5 @@
 export interface Order {
+    id:number;
     eventId: number;
     userName:string;
     eventName:string;

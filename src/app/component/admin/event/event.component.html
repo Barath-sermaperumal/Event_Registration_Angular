@@ -1,6 +1,7 @@
 <!-- Button trigger modal -->
-<div class="d-flex justify-content-center">
-  <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<div class="d-flex justify-content-between mt-4 mb-4">
+  <h1>Events</h1>
+  <button type="button" class="btn btn-primary mb-3 mx-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add Event
   </button>
 </div>
@@ -37,7 +38,6 @@
   </div>
 </div>
 <!-- Modal -->
-<h1>Events Summary</h1>
 <table class="table align-middle mb-0 bg-white container">
     <thead>
       <tr>
@@ -59,8 +59,8 @@
                 style="width: 45px; height: 45px"
                 />
             <div class="ms-3">
-              <p class="fw-bold mb-1">{{a.name}}</p>
-              <p class="text-muted mb-0">{{a.description}}</p>
+              <p class="fw-normal mb-1">{{a.name}}</p>
+              <p class="text-muted mb-0">{{a.description.substring(0,40)}}</p>
             </div>
           </div>
         </td>
@@ -70,28 +70,32 @@
         </td>
         <td>
             <p class="fw-normal mb-1">{{a.venue}}</p>
-            <p class="text-muted mb-0">{{a.price}}</p>
+            <p class="text-muted mb-0">Price: {{a.price}}</p>
         </td>
         <td>
             <p class="fw-normal mb-1">available tickets: {{a.availableTickets}}</p>
             <p class="text-muted mb-0">{{a.categoryName}}</p>
         </td>
         <td>
-          <button
-                  type="button"
-                  class="btn btn-link btn-rounded btn-sm fw-bold"
-                  data-mdb-ripple-color="dark"
-                  (click)="openModal(getAEvent(a.id!))"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Edit
-          </button>
-          <button
-          type="button"
-          class="btn btn-link btn-rounded btn-sm fw-bold"
-          data-mdb-ripple-color="dark"
-          >
-    Delete
-  </button>
+          <div class="px-1">
+            <a
+            type="button"
+            class="btn btn-primary btn-rounded btn-sm fw-bold"
+            data-mdb-ripple-color="dark"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="openModal(getAEvent(a.id!))"
+            ><i class="fa-solid fa-pen-to-square"></i
+          ></a>
+          </div>
+          <div class="px-1">
+            <a
+            type="submit"
+            class="btn btn-danger btn-rounded btn-sm fw-bold"
+            (click)="deleteEvent(a.id!)"
+            ><i class="fa-solid fa-trash"></i
+          ></a>
+          </div>
         </td>
       </tr>
     </tbody>

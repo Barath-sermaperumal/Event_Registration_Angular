@@ -18,9 +18,19 @@
     border: 1px solid #000;
     cursor: pointer;
   }
+
+  .seat-demo {
+    width: 30px; /* Adjust as needed for your layout */
+    height: 30px; /* Adjust as needed for your layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
   
   .occupied {
-    background-color: #FF0000; /* Change color to indicate occupied seats */
+    background: linear-gradient(111deg, rgba(82,80,255,1) 5%, rgba(219,113,255,1) 83%); /* Change color to indicate occupied seats */
     color: #FFF; /* Change text color for better visibility */
     cursor: not-allowed; /* Change cursor for occupied seats */
   }

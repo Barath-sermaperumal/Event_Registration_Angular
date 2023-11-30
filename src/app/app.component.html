@@ -7,13 +7,13 @@
   }
 </style>
 
-<div *ngIf="!isLoggedIn" class="container-fluid vh-100 d-flex flex-column align-items-around g-0">
-  <div class="row">
+<div *ngIf="!isLoggedIn" class="d-flex flex-column align-items-around">
+  <div class="row" *ngIf="!isLoginOrRegister()">
     <header class="navbar">
       <div>
         <a class="navbar-brand px-3 text-black" routerLink="/"><img src="../assets/images/Logo.png"  height="70px"></a>
       </div>
-      <div class="navbar-nav px-5 d-flex text-white" routerLink="/login" role="button">
+      <div class="navbar-nav px-5 d-flex text-black" routerLink="/login" role="button">
         <div class="d-flex justify-content-end loginActions btn px-3 p-2 btn-primary">
           <span>Sign In</span>
         <i class="fa-solid fa-right-from-bracket text-white p-1"></i></div>
@@ -23,14 +23,14 @@
   <router-outlet/>
 </div>
 
-<div *ngIf="isLoggedIn" class="container-fluid vh-100 d-flex flex-column align-items-around g-0">
+<div *ngIf="isLoggedIn && !isLoginOrRegister()" class="d-flex flex-column align-items-around">
   <div class="row">
     <header class="navbar">
       <div>
         <a class="navbar-brand px-3 text-black" routerLink="/"><img src="../assets/images/Logo.png"  height="70px"></a>
-        <a class="navbar-brand text-black" routerLink="/">Home</a>
-        <a class="navbar-brand text-black" routerLink="/order">Orders</a>
-        <a class="navbar-brand text-black" routerLink="/profile">Profile</a>
+        <a class="navbar-brand text-black" *ngIf="!isAdmin" routerLink="/">Home</a>
+        <a class="navbar-brand text-black" *ngIf="!isAdmin" routerLink="/order">Orders</a>
+        <a class="navbar-brand text-black" *ngIf="!isAdmin" routerLink="/profile">Profile</a>
       </div>
       <div class="navbar-nav px-5 d-flex text-white" (click)="logout()" role="button">
         <div class="d-flex justify-content-end loginActions btn px-3 p-2 btn-primary">
@@ -38,30 +38,31 @@
         <i class="fa-solid fa-right-from-bracket text-white p-1"></i></div>
       </div>
     </header>
+    <p *ngIf="isAdmin" class="seprator p-0 m-0"></p>
   </div>
 
-  <div *ngIf="isAdmin" class="row flex-grow-1">
-    <div class="sidebar border border-right col-2 p-0">
-      <div class="bg-body-tertiary h-100" tabindex="-1">
+  <div *ngIf="isAdmin" class="vh-100 row flex-grow-1">
+    <div class="sidebar border border-right col-2 p-0 sidePosition">
+      <div class="bg-body-tertiary vh-100 sidePosition" tabindex="-1">
         <div class="d-flex flex-column p-0 pt-3 overflow-y-auto">
           <ul class="nav flex-column">
-            <li class="nav-item d-flex align-items-center px-4 sideBarItem">
+            <li class="nav-item d-flex align-items-center px-5 sideBarItem" [ngClass]="getRoute()==='admin' ? 'active':''">
               <i class="fa-solid fa-house"></i>
               <a class="nav-link d-flex align-items-center" routerLink="/admin"> Dashboard </a>
             </li>
-            <li class="nav-item d-flex align-items-center px-4 sideBarItem">
+            <li class="nav-item d-flex align-items-center px-5 sideBarItem" [ngClass]="getRoute()==='adminCategory' ? 'active':''">
               <i class="fa-solid fa-book"></i>
               <a class="nav-link d-flex align-items-center" routerLink="/adminCategory">Categories</a>
             </li>
-            <li class="nav-item d-flex align-items-center px-4 sideBarItem">
+            <li class="nav-item d-flex align-items-center px-5 sideBarItem" [ngClass]="getRoute()==='adminEvent' ? 'active':''">
               <i class="fa-solid fa-user"></i>
               <a class="nav-link d-flex align-items-center" routerLink="/adminEvent">Events</a>
             </li>
-            <li class="nav-item d-flex align-items-center px-4 sideBarItem">
+            <li class="nav-item d-flex align-items-center px-5 sideBarItem" [ngClass]="getRoute()==='adminOrder' ? 'active':''">
               <i class="fa-solid fa-clock-rotate-left"></i>
               <a class="nav-link d-flex align-items-center" routerLink="/adminOrder">Orders</a>
             </li>
-            <li class="nav-item d-flex align-items-center px-4 sideBarItem">
+            <li class="nav-item d-flex align-items-center px-5 sideBarItem" [ngClass]="getRoute()==='adminControl' ? 'active':''">
               <i class="fa-solid fa-clock-rotate-left"></i>
               <a class="nav-link d-flex align-items-center" routerLink="/adminControl">Users</a>
             </li>

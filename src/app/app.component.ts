@@ -3,6 +3,7 @@ import { AuthService } from './service/auth.service';
 import { AnimationOptions } from 'ngx-lottie';
 import { LoaderService } from './service/loader.service';
 import { RouterModule } from '@angular/router';
+import { StorageService } from './service/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +22,14 @@ export class AppComponent {
   isLoggedIn: boolean = false;
   isLoginRegister: boolean = false;
 
+  route:any=this.storageService.getRoute();;
+
   constructor(
     private authService: AuthService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    private storageService: StorageService
   ) {
+    
     let a:URL = new URL(window.location.href);
     if(a.pathname==="/login" || a.pathname === "/register"){
       this.authService.isAdmin$.subscribe((isAdmin) => {
@@ -58,5 +63,18 @@ export class AppComponent {
       this.isLoginRegister = isLoginRegister;
     });
     this.authService.logout();
+  }
+
+  isLoginOrRegister(){
+    let a:URL = new URL(window.location.href);
+    let isTrue:Boolean=false;
+    if(a.pathname==="/login" || a.pathname==="/register"){
+      isTrue=true;
+    }
+    return isTrue;
+  }
+
+  getRoute(){
+    return this.storageService.getRoute();
   }
 }

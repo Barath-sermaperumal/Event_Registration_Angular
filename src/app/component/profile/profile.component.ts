@@ -17,6 +17,7 @@ export class ProfileComponent {
   email:String="";
   phone:number=0;
   address:String="";
+  image:String="";
 
   constructor(private authService:AuthService){
     this.user=this.getProfile();
@@ -32,6 +33,7 @@ export class ProfileComponent {
     password: "",
     address:"",
     role: "",
+    image:"",
   }
 
   getProfile(){

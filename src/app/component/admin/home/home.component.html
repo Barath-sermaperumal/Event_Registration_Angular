@@ -1,11 +1,13 @@
-<h1>Events Summary</h1>
+<div class="d-flex justify-content-between mt-4 mb-4">
+  <h1>Dashboard</h1>
+</div>
 <table class="table align-middle mb-0 bg-white container">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Ticket Details</th>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Tickets Sold</th>
+        <th>Revenue</th>
       </tr>
     </thead>
     <tbody>
@@ -13,24 +15,24 @@
         <td>
           <div class="d-flex align-items-center">
             <img
-                src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+                src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.eventId }}"
                 class="rounded-circle"
                 alt=""
                 style="width: 45px; height: 45px"
                 />
             <div class="ms-3">
-              <p class="fw-bold mb-1">{{a.eventName}}</p>
+              <p class="fw-normal mb-1">{{a.eventName}}</p>
             </div>
           </div>
         </td>
         <td>
-            <p class="fw-bold mb-1">{{a.date}}</p>
+            <p class="fw-normal mb-1">{{a.date}}</p>
         </td>
         <td>
-            <p class="fw-bold mb-1">{{a.tickets_sold}}</p>
+            <p class="fw-normal mb-1">{{a.tickets_sold}}</p>
         </td>
         <td>
-            <p class="fw-bold mb-1">{{a.revenue}}</p>
+            <p class="fw-normal mb-1">{{a.revenue}}</p>
         </td>
       </tr>
     </tbody>

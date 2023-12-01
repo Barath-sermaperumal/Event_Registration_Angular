@@ -53,10 +53,11 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="[images/logo.png](https://github.com/Barath-sermaperumal/Event_Registration_Angular/assets/Images/Logo.png)" alt="Logo" width="80" height="80">
+    <img src="https://github.com/Barath-sermaperumal/Event_Registration_Angular/assets/images/Logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">EVENTOR</h3>
+    <h3 align="center">TICKET RESERVATION SYSTEM</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
@@ -126,14 +127,10 @@ Use the `BLANK_README.md` to get started.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
+
 * [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

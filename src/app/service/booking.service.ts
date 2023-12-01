@@ -6,23 +6,23 @@ import { Seat } from '../model/seat';
 import { Ticketseat } from '../model/ticketseat';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookingService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  getReport():Observable<AppResponse>{
+  getReport(): Observable<AppResponse> {
     return this.http.get<AppResponse>(
       'http://localhost:8080/EventRegistration/API/Admin/Report'
     );
   }
 
-  bookTicket(bookedSeat:Ticketseat):Observable<AppResponse>{
+  bookTicket(bookedSeat: Ticketseat): Observable<AppResponse> {
     console.log(bookedSeat);
-    
+
     return this.http.post<AppResponse>(
-      'http://localhost:8080/EventRegistration/API/User/Order/Ticketbooking',bookedSeat
+      'http://localhost:8080/EventRegistration/API/User/Order/Ticketbooking',
+      bookedSeat
     );
   }
 }

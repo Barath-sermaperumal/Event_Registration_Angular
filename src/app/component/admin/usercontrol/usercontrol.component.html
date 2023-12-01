@@ -2,43 +2,42 @@
   <h1>Users</h1>
 </div>
 <table class="table align-middle mb-0 bg-white container">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>Role</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let a of user">
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-                src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-                class="rounded-circle"
-                alt=""
-                style="width: 45px; height: 45px"
-                />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">{{a.name}}</p>
-            </div>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of user">
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+            src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+            class="rounded-circle"
+            alt=""
+            style="width: 45px; height: 45px"
+          />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{ a.name }}</p>
           </div>
-        </td>
-        <td>
-            <p class="fw-bold mb-1">{{a.email}}</p>
-        </td>
-        <td>
-            <p class="fw-bold mb-1">{{a.phone}}</p>
-        </td>
-        <td>
-            <p class="fw-bold mb-1">{{a.address}}</p>
-        </td>
-        <td>
-            <p class="fw-bold mb-1">{{a.role}}</p>
-        </td>
-        
-      </tr>
-    </tbody>
-  </table>
+        </div>
+      </td>
+      <td>
+        <p class="fw-bold mb-1">{{ a.email }}</p>
+      </td>
+      <td>
+        <p class="fw-bold mb-1">{{ a.phone }}</p>
+      </td>
+      <td>
+        <p class="fw-bold mb-1">{{ a.address }}</p>
+      </td>
+      <td>
+        <p class="fw-bold mb-1">{{ a.role }}</p>
+      </td>
+    </tr>
+  </tbody>
+</table>

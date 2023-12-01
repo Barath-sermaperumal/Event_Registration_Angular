@@ -24,17 +24,17 @@ export class LoginComponent {
   isLoginRegister: boolean = false;
 
   constructor(private authService: AuthService) {
-    let a:URL = new URL(window.location.href);
-    if(a.pathname==="/login" || a.pathname === "/register"){
+    let a: URL = new URL(window.location.href);
+    if (a.pathname === '/login' || a.pathname === '/register') {
       this.authService.isAdmin$.subscribe((isAdmin) => {
         this.isAdmin = isAdmin;
       });
-  
+
       this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
         this.isLoggedIn = isLoggedIn;
       });
-  
-      this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+
+      this.authService.isLoginRegister$.subscribe((isLoginRegister) => {
         this.isLoginRegister = isLoginRegister;
       });
     }

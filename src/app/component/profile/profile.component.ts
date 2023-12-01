@@ -5,63 +5,60 @@ import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
 })
-
 export class ProfileComponent {
+  id: number = 0;
+  name: String = '';
+  username: String = '';
+  gender: String = '';
+  email: String = '';
+  phone: number = 0;
+  address: String = '';
+  image: String = '';
 
-  id:number=0;
-  name:String="";
-  username: String="";
-  gender:String="";
-  email:String="";
-  phone:number=0;
-  address:String="";
-  image:String="";
-
-  constructor(private authService:AuthService){
-    this.user=this.getProfile();
+  constructor(private authService: AuthService) {
+    this.user = this.getProfile();
   }
 
-  user:AppUser={
+  user: AppUser = {
     id: 0,
-    name:"",
-    username: "",
-    gender:"",
-    email:"",
-    phone:0,
-    password: "",
-    address:"",
-    role: "",
-    image:"",
-  }
+    name: '',
+    username: '',
+    gender: '',
+    email: '',
+    phone: 0,
+    password: '',
+    address: '',
+    role: '',
+    image: '',
+  };
 
-  getProfile(){
+  getProfile() {
     this.authService.getUser().subscribe({
-      next:(Response:any)=>{
-        this.user=Response.data;
+      next: (Response: any) => {
+        this.user = Response.data;
       },
-      complete:()=>{},
-      error(error:Error) {
+      complete: () => {},
+      error(error: Error) {
         console.log('Message:', error.message);
         console.log('Name:', error.name);
-      }
+      },
     });
     return this.user;
   }
 
-  updateProfile(profileForm:NgForm){
-    let formvalue:AppUser=profileForm.value;
-    this.authService.updateUser(formvalue).subscribe(
-      {
-      next:(Response:any)=>{
-        this.user=Response.data;
+  updateProfile(profileForm: NgForm) {
+    let formvalue: AppUser = profileForm.value;
+    this.authService.updateUser(formvalue).subscribe({
+      next: (Response: any) => {
+        this.user = Response.data;
       },
-      complete:()=>{},
-      error(error:Error) {
+      complete: () => {},
+      error(error: Error) {
         console.log('Message:', error.message);
         console.log('Name:', error.name);
-      }
+      },
     });
     return this.user;
   }

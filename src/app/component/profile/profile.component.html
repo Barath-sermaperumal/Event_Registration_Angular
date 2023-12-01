@@ -2,27 +2,33 @@
   <div class="row">
     <div class="col-1 bod"></div>
     <div class="col-4 border-right bod">
-      <div class="d-flex mod flex-column align-items-center text-center p-3 py-5">
+      <div
+        class="d-flex mod flex-column align-items-center text-center p-3 py-5"
+      >
         <img
           class="rounded-circle mt-5 mod"
           width="150px"
           src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
-        /><span class="font-weight-bold">{{user.name}}</span
+        /><span class="font-weight-bold">{{ user.name }}</span
         ><span class="text-black-50">{{ user.email }}</span
         ><span>
-            <a class="btn btn-primary">change password</a>
+          <a class="btn btn-primary">change password</a>
         </span>
       </div>
     </div>
     <div class="col-1 bod"></div>
     <div class="card shadow col-5 p-3 border-right">
-      <form class="p-3 py-5" #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm)">
+      <form
+        class="p-3 py-5"
+        #profileForm="ngForm"
+        (ngSubmit)="updateProfile(profileForm)"
+      >
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="text-right">Profile Settings</h4>
         </div>
-        
+
         <div class="row mt-3">
           <div class="col-md-12">
             <input
@@ -96,10 +102,7 @@
           </div>
         </div>
         <div class="mt-5 text-center">
-          <button
-            class="btn btn-primary profile-button"
-            type="submit"
-          >
+          <button class="btn btn-primary profile-button" type="submit">
             Save Profile
           </button>
         </div>
@@ -107,7 +110,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- modal -->
 <div
@@ -130,24 +132,29 @@
       </div>
       <div class="modal-body d-flex justify-content-center">
         <div *ngIf="user.image == null" class="d-flex">
-          <img class="rounded-circle"
-          width="250px"
-          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+          <img
+            class="rounded-circle"
+            width="250px"
+            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+          />
         </div>
-        <div *ngIf="user.image!=null" class="d-flex">
-          <img src="">
+        <div *ngIf="user.image != null" class="d-flex">
+          <img src="" />
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#reciept"
-        >Update Profile</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#reciept"
+        >
+          Update Profile
+        </button>
       </div>
     </div>
   </div>
 </div>
-

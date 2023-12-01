@@ -7,10 +7,13 @@ import { SeatingService } from 'src/app/service/seating.service';
 
 @Component({
   selector: 'app-userorder',
-  templateUrl: './userorder.component.html'
+  templateUrl: './userorder.component.html',
 })
 export class UserorderComponent {
-  constructor(private orderService:OrderService,private seatingService:SeatingService){
+  constructor(
+    private orderService: OrderService,
+    private seatingService: SeatingService
+  ) {
     this.getUserOrder();
   }
 
@@ -18,31 +21,29 @@ export class UserorderComponent {
     path: '/assets/order.json',
   };
 
-  name:string=JSON.parse(localStorage.getItem("loggedInUser")!).name;
+  name: string = JSON.parse(localStorage.getItem('loggedInUser')!).name;
 
-  order:Order[]=[]
-  getUserOrder(){
+  order: Order[] = [];
+  getUserOrder() {
     this.orderService.getUserOrder().subscribe({
-      next:(Response:any)=>{
-        this.order=Response.data;
+      next: (Response: any) => {
+        this.order = Response.data;
       },
-      complete:()=>{},
-      error:()=>{
-        console.log("Error");
-        
-      }
+      complete: () => {},
+      error: () => {
+        console.log('Error');
+      },
     });
     return this.order;
   }
 
-  deleteOrder(a:Order){
+  deleteOrder(a: Order) {
     this.seatingService.deleteSeats(a.id).subscribe({
-      next:(Response:any)=>{
+      next: (Response: any) => {},
+      complete: () => {},
+      error: () => {
+        console.log('Error');
       },
-      complete:()=>{},
-      error:()=>{
-        console.log("Error"); 
-      }
     });
     this.getUserOrder();
   }

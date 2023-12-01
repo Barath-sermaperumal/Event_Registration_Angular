@@ -8,7 +8,11 @@
       <div class="card col-5 p-5 shadow">
         <div class="d-flex flex-column align-items-center">
           <h2 class="display-4 text-primary">Login</h2>
-          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="w-75 d-flex flex-column align-items-center">
+          <form
+            #loginForm="ngForm"
+            (ngSubmit)="login(loginForm)"
+            class="w-75 d-flex flex-column align-items-center"
+          >
             <!-- Username input -->
             <div class="form-outline mb-3 w-100">
               <label class="form-label" for="username">Username</label>
@@ -19,7 +23,7 @@
                 [(ngModel)]="username"
               />
             </div>
-  
+
             <!-- Password input -->
             <div class="form-outline mb-3 w-100">
               <label class="form-label" for="password">Password</label>
@@ -27,30 +31,31 @@
                 type="password"
                 class="form-control"
                 name="password"
-                [(ngModel)]="password" />
+                [(ngModel)]="password"
+              />
             </div>
-  
+
             <p
               class="error"
-              [ngClass]="error.length > 0 ? 'visible' : 'invisible'">
+              [ngClass]="error.length > 0 ? 'visible' : 'invisible'"
+            >
               {{ error }}
             </p>
-  
-            <div class=" mb-4">
+
+            <div class="mb-4">
               <span>Not registered?</span>
               <a
                 routerLink="/register"
-                class="text-primary text-decoration-none px-2">
+                class="text-primary text-decoration-none px-2"
+              >
                 Register here
               </a>
             </div>
-  
+
             <!-- Submit button -->
             <div class="d-grid gap-2 w-50">
               <button type="submit" class="btn btn-primary">Login</button>
             </div>
-
-
           </form>
         </div>
       </div>

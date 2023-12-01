@@ -1,84 +1,266 @@
 <!-- Button trigger modal -->
 <div class="d-flex justify-content-between mt-4 mb-4">
   <h1>Events</h1>
-  <button type="button" class="btn btn-primary mb-3 mx-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button
+    type="button"
+    class="btn btn-primary mb-3 mx-5"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
     Add Event
   </button>
 </div>
 
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Event</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <form class="modal-body form" #EventForm="ngForm" (ngSubmit)="addproduct(EventForm)">
-        <input type="hidden" name="id" [(ngModel)]="singleEvent.id">
-        <input type="text" name="name" [(ngModel)]="singleEvent.name" class="form-control mb-3" placeholder="Event Name">
-        <input type="text" name="description" [(ngModel)]="singleEvent.description" class="form-control mb-3" placeholder="Description">
-        <input type="text" name="date" [(ngModel)]="singleEvent.date" class="form-control mb-3" placeholder="Date(YYYY-MM-DD)">
-        <input type="text" name="venue" [(ngModel)]="singleEvent.venue" class="form-control mb-3" placeholder="Venue">
-        <input type="text" name="host" [(ngModel)]="singleEvent.host" class="form-control mb-3" placeholder="Host">
-        <input type="text" name="price" [(ngModel)]="singleEvent.price" class="form-control mb-3" placeholder="Price">
-        <input type="text" name="availableTickets" [(ngModel)]="singleEvent.availableTickets" class="form-control mb-3" placeholder="Available Tickets">
-        <input type="text" name="categoryId" [(ngModel)]="singleEvent.categoryId" class="form-control" placeholder="Category Id">
+      <form
+        class="modal-body form"
+        #EventForm="ngForm"
+        (ngSubmit)="addproduct(EventForm)"
+      >
+        <input type="hidden" name="id" [(ngModel)]="singleEvent.id" />
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="singleEvent.name"
+          ngModel
+          required
+          minlength="4"
+          pattern="^[A-Za-z\s'-]+$"
+          #modelEventName="ngModel"
+          [ngClass]="
+            modelEventName.invalid && modelEventName.dirty ? 'is-invalid' : ''
+          "
+          class="form-control mb-3"
+          placeholder="Event Name"
+        />
+        <p class="error" *ngIf="modelEventName.invalid && modelEventName.dirty">
+          Please enter a valid event name
+        </p>
+        <input
+          type="text"
+          name="description"
+          [(ngModel)]="singleEvent.description"
+          class="form-control mb-3"
+          placeholder="Description"
+          ngModel
+          required
+          minlength="10"
+          maxlength="50"
+          pattern="^[A-Za-z\s'-]+$"
+          #modelDescription="ngModel"
+          [ngClass]="
+            modelDescription.invalid && modelDescription.dirty
+              ? 'is-invalid'
+              : ''
+          "
+        />
+        <p
+          class="error"
+          *ngIf="modelDescription.invalid && modelDescription.dirty"
+        >
+          Please enter description
+        </p>
+        <input
+          type="text"
+          name="date"
+          [(ngModel)]="singleEvent.date"
+          class="form-control mb-3"
+          placeholder="Date(YYYY-MM-DD)"
+          required
+          ngModel
+          #modelDate="ngModel"
+        />
+        <p class="error" *ngIf="modelDate.invalid && modelDate.dirty">
+          Please enter a event date
+        </p>
+        <input
+          type="text"
+          name="venue"
+          [(ngModel)]="singleEvent.venue"
+          class="form-control mb-3"
+          placeholder="Venue"
+          ngModel
+          required
+          minlength="5"
+          maxlength="10"
+          pattern="^[A-Za-z\s'-]+$"
+          #modelVenue="ngModel"
+          [ngClass]="modelVenue.invalid && modelVenue.dirty ? 'is-invalid' : ''"
+        />
+        <p class="error" *ngIf="modelVenue.invalid && modelVenue.dirty">
+          Please enter a venue
+        </p>
+        <input
+          type="text"
+          name="host"
+          [(ngModel)]="singleEvent.host"
+          class="form-control mb-3"
+          placeholder="Host"
+          ngModel
+          required
+          minlength="3"
+          maxlength="10"
+          pattern="^[A-Za-z\s'-]+$"
+          #modelHost="ngModel"
+          [ngClass]="modelHost.invalid && modelHost.dirty ? 'is-invalid' : ''"
+        />
+        <p class="error" *ngIf="modelHost.invalid && modelHost.dirty">
+          Please enter a host
+        </p>
+        <input
+          type="number"
+          name="price"
+          [(ngModel)]="singleEvent.price"
+          class="form-control mb-3"
+          placeholder="Price"
+          ngModel
+          required
+          #modelPrice="ngModel"
+          [ngClass]="modelPrice.invalid && modelPrice.dirty ? 'is-invalid' : ''"
+        />
+        <p class="error" *ngIf="modelPrice.invalid && modelPrice.dirty">
+          Please enter price
+        </p>
+        <input
+          type="number"
+          name="availableTickets"
+          [(ngModel)]="singleEvent.availableTickets"
+          class="form-control mb-3"
+          placeholder="Available Tickets"
+          ngModel
+          required
+          #modelAvailableTickets="ngModel"
+          [ngClass]="
+            modelAvailableTickets.invalid && modelAvailableTickets.dirty
+              ? 'is-invalid'
+              : ''
+          "
+        />
+        <p
+          class="error"
+          *ngIf="modelAvailableTickets.invalid && modelAvailableTickets.dirty"
+        >
+          Please enter available tickets
+        </p>
+        <input
+          type="number"
+          name="categoryId"
+          [(ngModel)]="singleEvent.categoryId"
+          class="form-control"
+          required
+          ngModel
+          placeholder="Category Id"
+          #modelCategoryId="ngModel"
+          [ngClass]="
+            modelCategoryId.invalid && modelCategoryId.dirty ? 'is-invalid' : ''
+          "
+        />
+        <p
+          class="error"
+          *ngIf="modelCategoryId.invalid && modelCategoryId.dirty"
+        >
+          Please enter price
+        </p>
         <div class="form-outline mb-3">
           <label class="form-label" for="image">Choose Image</label>
-          <input type="file" class="input-file" name="image" id="image" src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/' + singleEvent.id }}" [(ngModel)]="singleEvent.image"  (change)="onFileChange($event)" />
-          </div>
+          <input
+            type="file"
+            class="input-file"
+            name="image"
+            id="image"
+            required
+            ngModel
+            #modelImage="ngModel"
+            src="{{
+              'http://localhost:8080/API/downloadFile/downloadImage/' +
+                singleEvent.id
+            }}"
+            [(ngModel)]="singleEvent.image"
+            (change)="onFileChange($event)"
+          />
+        </div>
+        <p class="error" *ngIf="modelImage.invalid && modelImage.dirty">
+          Upload image
+        </p>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Add Event</button>
-      </div>
-    </form>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Add Event</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 <!-- Modal -->
 <table class="table align-middle mb-0 bg-white container">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Venue</th>
-        <th>Ticket Details</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let a of event">
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-                src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.id }}"
-                class="rounded-circle"
-                alt=""
-                style="width: 45px; height: 45px"
-                />
-            <div class="ms-3">
-              <p class="fw-normal mb-1">{{a.name}}</p>
-              <p class="text-muted mb-0">{{a.description.substring(0,40)}}</p>
-            </div>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Venue</th>
+      <th>Ticket Details</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of event">
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+            src="{{
+              'http://localhost:8080/API/downloadFile/downloadImage/event/' +
+                a.id
+            }}"
+            class="rounded-circle"
+            alt=""
+            style="width: 45px; height: 45px"
+          />
+          <div class="ms-3">
+            <p class="fw-normal mb-1">{{ a.name }}</p>
+            <p class="text-muted mb-0">{{ a.description.substring(0, 40) }}</p>
           </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{a.host}}</p>
-          <p class="text-muted mb-0">{{a.date}}</p>
-        </td>
-        <td>
-            <p class="fw-normal mb-1">{{a.venue}}</p>
-            <p class="text-muted mb-0">Price: {{a.price}}</p>
-        </td>
-        <td>
-            <p class="fw-normal mb-1">available tickets: {{a.availableTickets}}</p>
-            <p class="text-muted mb-0">{{a.categoryName}}</p>
-        </td>
-        <td>
-          <div class="px-1">
-            <a
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{ a.host }}</p>
+        <p class="text-muted mb-0">{{ a.date }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{ a.venue }}</p>
+        <p class="text-muted mb-0">Price: {{ a.price }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">
+          available tickets: {{ a.availableTickets }}
+        </p>
+        <p class="text-muted mb-0">{{ a.categoryName }}</p>
+      </td>
+      <td>
+        <div class="px-1">
+          <a
             type="button"
             class="btn btn-primary btn-rounded btn-sm fw-bold"
             data-mdb-ripple-color="dark"
@@ -87,16 +269,16 @@
             (click)="openModal(getAEvent(a.id!))"
             ><i class="fa-solid fa-pen-to-square"></i
           ></a>
-          </div>
-          <div class="px-1">
-            <a
+        </div>
+        <div class="px-1">
+          <a
             type="submit"
             class="btn btn-danger btn-rounded btn-sm fw-bold"
             (click)="deleteEvent(a.id!)"
             ><i class="fa-solid fa-trash"></i
           ></a>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

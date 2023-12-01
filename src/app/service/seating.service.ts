@@ -7,23 +7,21 @@ import { EventService } from './event.service';
 import { Order } from '../model/order';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class SeatingService {
-
-  constructor(private http:HttpClient,private eventService:EventService) { }
-  getSeats():Observable<AppResponse> {
+  constructor(private http: HttpClient, private eventService: EventService) {}
+  getSeats(): Observable<AppResponse> {
     return this.http.get<AppResponse>(
       `http://localhost:8080/EventRegistration/API/User/Event/6`
     );
   }
 
-  generateSeatingLayout(seat:number,columns:number){
-  let seatingLayout:Seat[][]=[];
-    let totalSeats:number=Number(localStorage.getItem("totalSeats"));
+  generateSeatingLayout(seat: number, columns: number) {
+    let seatingLayout: Seat[][] = [];
+    let totalSeats: number = Number(localStorage.getItem('totalSeats'));
     console.log(totalSeats);
-    
+
     const rows = Math.ceil(totalSeats / columns);
     let seatCounter = 1;
 
@@ -31,20 +29,24 @@ export class SeatingService {
       const row: Seat[] = [];
       for (let j = 0; j < columns; j++) {
         if (seatCounter <= totalSeats) {
-          row.push({ seatNumber: `${seatCounter}`, occupied: false, booked:false });
+          row.push({
+            seatNumber: `${seatCounter}`,
+            occupied: false,
+            booked: false,
+          });
           seatCounter++;
         } else {
           break;
         }
       }
-      seatingLayout.push(row);      
+      seatingLayout.push(row);
     }
-    localStorage.setItem("seatingLayout",JSON.stringify(seatingLayout));
+    localStorage.setItem('seatingLayout', JSON.stringify(seatingLayout));
   }
 
-  deleteSeats(id:number):Observable<AppResponse>{
+  deleteSeats(id: number): Observable<AppResponse> {
     return this.http.delete<AppResponse>(
       `http://localhost:8080/EventRegistration/API/User/order/delete/${id}`
-    )
+    );
   }
 }

@@ -1,7 +1,7 @@
-import { Seat } from "./seat";
+import { Seat } from './seat';
 
 export interface Ticketseat {
-    userId:number;
-    eventId:number;
-    bookedSeats:Seat[];
+  userId: number;
+  eventId: number;
+  bookedSeats: Seat[];
 }

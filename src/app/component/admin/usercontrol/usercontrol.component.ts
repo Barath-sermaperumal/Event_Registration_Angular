@@ -4,21 +4,20 @@ import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-usercontrol',
-  templateUrl: './usercontrol.component.html'
+  templateUrl: './usercontrol.component.html',
 })
 export class UsercontrolComponent {
-
-  constructor(private authService:AuthService){
+  constructor(private authService: AuthService) {
     this.getAllProfiles();
   }
 
-  user:AppUser[]=[];
-  getAllProfiles(){
+  user: AppUser[] = [];
+  getAllProfiles() {
     this.authService.getAllUsers().subscribe({
-      next:(response:any)=>{
+      next: (response: any) => {
         this.user = response.data;
       },
-      complete:()=>{},
+      complete: () => {},
       error: (error: Error) => {
         console.log('Message:', error.message);
         console.log('Name:', error.name);

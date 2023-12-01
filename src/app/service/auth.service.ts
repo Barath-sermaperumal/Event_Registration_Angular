@@ -17,12 +17,13 @@ export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private isStaffSubject = new BehaviorSubject<boolean>(false);
   private isLoginRegisterSubject = new BehaviorSubject<boolean>(false);
- 
+
   isAdmin$: Observable<boolean> = this.isAdminSubject.asObservable();
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
-  isLoginRegister$: Observable<boolean> = this.isLoginRegisterSubject.asObservable();
+  isLoginRegister$: Observable<boolean> =
+    this.isLoginRegisterSubject.asObservable();
   isStaff$: Observable<boolean> = this.isStaffSubject.asObservable();
- 
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -32,21 +33,19 @@ export class AuthService {
       this.setLoggedIn(storageService.getLoggedInUser());
     }
   }
- 
+
   login(login: Login): Observable<AppResponse> {
     return this.http
       .post<AppResponse>(`http://localhost:8080/api/auth/login`, login)
       .pipe(
         map((user) => {
           this.storageService.setAuthData(
-            window.btoa(login.username + ":" + login.password)
+            window.btoa(login.username + ':' + login.password)
           );
           return user;
         })
       );
   }
- 
-
 
   logout() {
     this.storageService.removeAuthData();
@@ -55,9 +54,9 @@ export class AuthService {
     this.isStaffSubject.next(false);
     this.storageService.removeLoggedInUser();
     this.storageService.removeRoute();
-    this.router.navigate(["/login"], { replaceUrl: true });
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
- 
+
   isAdmin(): boolean {
     return this.isAdminSubject.value;
   }
@@ -66,48 +65,51 @@ export class AuthService {
     return this.isLoggedInSubject.value;
   }
 
-  isLoginRegister():boolean{
+  isLoginRegister(): boolean {
     return this.isLoginRegisterSubject.value;
   }
- 
+
   setLoggedIn(user: AppUser): void {
     this.storageService.setLoggedInUser(user);
     this.isLoggedInSubject.next(true);
- 
+
     let route: string | null = this.storageService.getRoute();
     if (user.role === CONSTANT.USER) {
-      if (route === null) route = "";
-      this.router.navigate(["/" + route], { replaceUrl: true });
+      if (route === null) route = '';
+      this.router.navigate(['/' + route], { replaceUrl: true });
     } else if (user.role === CONSTANT.ADMIN) {
-      if (route === null) route = "admin";
+      if (route === null) route = 'admin';
       this.isAdminSubject.next(true);
-      this.router.navigate(["/" + route], { replaceUrl: true });
+      this.router.navigate(['/' + route], { replaceUrl: true });
     }
-
   }
 
   // customized
-  getUser():Observable<AppResponse>{
-    const id:Number=this.storageService.getLoggedInUser().id!;
+  getUser(): Observable<AppResponse> {
+    const id: Number = this.storageService.getLoggedInUser().id!;
     return this.http.get<AppResponse>(
       `http://localhost:8080/EventRegistration/API/User/profile/${id}`
     );
   }
 
-  getAllUsers():Observable<AppResponse>{
+  getAllUsers(): Observable<AppResponse> {
     return this.http.get<AppResponse>(
       `http://localhost:8080/EventRegistration/API/Admin/UserControl`
     );
   }
 
-  updateUser(profileForm:AppUser):Observable<AppResponse>{
+  updateUser(profileForm: AppUser): Observable<AppResponse> {
     console.log(profileForm);
-    return this.http.put<AppResponse>('http://localhost:8080/EventRegistration/API/User/profile',profileForm);
+    return this.http.put<AppResponse>(
+      'http://localhost:8080/EventRegistration/API/User/profile',
+      profileForm
+    );
   }
 
-  registerUser(user:AppUser):Observable<AppResponse>{
+  registerUser(user: AppUser): Observable<AppResponse> {
     return this.http.post<AppResponse>(
-      'http://localhost:8080/api/auth/register',user
-    )
+      'http://localhost:8080/api/auth/register',
+      user
+    );
   }
 }

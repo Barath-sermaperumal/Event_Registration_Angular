@@ -1,25 +1,24 @@
 <div
   class="container d-flex flex-column justify-content-center align-items-center mt-5"
 >
-
   <div class="demo col-4 d-flex justify-content-between">
     <div class="d-flex">
-      <div class=" seat-demo px-2">1</div>
+      <div class="seat-demo px-2">1</div>
       <p class="px-2">Available</p>
     </div>
     <div class="d-flex">
-      <div class=" seat-demo occupied px-2">2</div>
+      <div class="seat-demo occupied px-2">2</div>
       <p class="px-2">Selected</p>
     </div>
     <div class="d-flex">
-      <div class=" seat-demo disabled px-2">3</div>
+      <div class="seat-demo disabled px-2">3</div>
       <p class="px-2">Disabled</p>
     </div>
   </div>
   <!-- <div class="screen shadow"></div> -->
-  <img class="screen" src="../../../assets/images/images.jfif">
+  <img class="screen" src="../../../assets/images/images.jfif" />
 
-  <div class=" seating-plan mb-5">
+  <div class="seating-plan mb-5">
     <div
       class="row d-flex justify-content-center"
       *ngFor="let row of localSeats"
@@ -33,7 +32,7 @@
         }"
         (click)="toggleSeat(seat)"
       >
-        {{seat.seatNumber}}
+        {{ seat.seatNumber }}
       </div>
     </div>
   </div>
@@ -70,47 +69,80 @@
         <div>
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h5 class="mb-0">Card details</h5>
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-              class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+              class="img-fluid rounded-3"
+              style="width: 45px"
+              alt="Avatar"
+            />
           </div>
-  
+
           <p class="small mb-2">Card type</p>
-          <a href="#!" type="submit" class="text-white"><i
-              class="fab fa-cc-mastercard text-black fa-2x me-2"></i></a>
-          <a href="#!" type="submit" class="text-white"><i
-              class="fab fa-cc-visa text-black fa-2x me-2"></i></a>
-          <a href="#!" type="submit" class="text-white"><i
-              class="fab fa-cc-amex text-black fa-2x me-2"></i></a>
-          <a href="#!" type="submit" class="text-white"><i 
-              class="fab fa-cc-paypal text-black fa-2x"></i></a>
-  
-  
+          <a href="#!" type="submit" class="text-white"
+            ><i class="fab fa-cc-mastercard text-black fa-2x me-2"></i
+          ></a>
+          <a href="#!" type="submit" class="text-white"
+            ><i class="fab fa-cc-visa text-black fa-2x me-2"></i
+          ></a>
+          <a href="#!" type="submit" class="text-white"
+            ><i class="fab fa-cc-amex text-black fa-2x me-2"></i
+          ></a>
+          <a href="#!" type="submit" class="text-white"
+            ><i class="fab fa-cc-paypal text-black fa-2x"></i
+          ></a>
+
           <form class="mt-4">
             <div class="form-outline form-white mb-4 col-11">
-              <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                placeholder="Cardholder's Name" />
+              <input
+                type="text"
+                id="typeName"
+                class="form-control form-control-lg"
+                siez="17"
+                placeholder="Cardholder's Name"
+              />
             </div>
-  
+
             <div class="form-outline form-white mb-4 col-11">
-              <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+              <input
+                type="text"
+                id="typeText"
+                class="form-control form-control-lg"
+                siez="17"
+                placeholder="1234 5678 9012 3457"
+                minlength="19"
+                maxlength="19"
+              />
             </div>
-  
+
             <div class="row">
               <div class="col-md-6">
                 <div class="form-outline form-white">
-                  <input type="text" id="typeExp" class="form-control form-control-lg"
-                    placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
+                  <input
+                    type="text"
+                    id="typeExp"
+                    class="form-control form-control-lg"
+                    placeholder="MM/YYYY"
+                    size="7"
+                    id="exp"
+                    minlength="7"
+                    maxlength="7"
+                  />
                 </div>
               </div>
               <div class="col-md-5">
                 <div class="form-outline form-white">
-                  <input type="password" id="cvv" class="form-control form-control-lg"
-                    placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                  <input
+                    type="password"
+                    id="cvv"
+                    class="form-control form-control-lg"
+                    placeholder="&#9679;&#9679;&#9679;"
+                    size="1"
+                    minlength="3"
+                    maxlength="3"
+                  />
                 </div>
               </div>
             </div>
-  
           </form>
         </div>
       </div>
@@ -118,10 +150,14 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#reciept"
-        >Save changes</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#reciept"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>
@@ -153,81 +189,106 @@
           </div>
         </div>
 
-          <div class="invoice p-5">
-            <div
-              class="payment border-top mt-3 mb-3 border-bottom table-responsive"
-            >
-              <table class="table table-borderless">
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="py-2">
-                        <span class="d-block text-muted">{{getorder().orderDate}}</span>
-                        <span></span>
-                      </div>
-                    </td>
+        <div class="invoice p-5">
+          <div
+            class="payment border-top mt-3 mb-3 border-bottom table-responsive"
+          >
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">{{
+                        getorder().orderDate
+                      }}</span>
+                      <span></span>
+                    </div>
+                  </td>
 
-                    <td>
-                      <div class="py-2">
-                        <span class="d-block text-muted">Order No</span>
-                        <span>{{order.id}}</span>
-                      </div>
-                    </td>
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Order No</span>
+                      <span>{{ order.id }}</span>
+                    </div>
+                  </td>
 
-                    <td>
-                      <div class="py-2">
-                        <span class="d-block text-muted">Payment</span>
-                        <span
-                          ><img
-                            src="https://img.icons8.com/color/48/000000/mastercard.png"
-                            width="20"
-                        /></span>
-                      </div>
-                    </td>
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Payment</span>
+                      <span
+                        ><img
+                          src="https://img.icons8.com/color/48/000000/mastercard.png"
+                          width="20"
+                      /></span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="product border-bottom table-responsive">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td width="20%">
+                    <img
+                      src="{{
+                        'http://localhost:8080/API/downloadFile/downloadImage/event/' +
+                          getorder().eventId
+                      }}"
+                      width="90"
+                    />
+                  </td>
 
-            <div class="product border-bottom table-responsive">
-              <table class="table table-borderless">
-                <tbody>
-                  <tr>
-                    <td width="20%">
-                      <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + getorder().eventId }}" width="90" />
-                    </td>
-
-                    <td width="60%">
-                      <span class="font-weight-bold">{{getorder().eventName}}</span>
-                      <div class="product-qty">
-                        <span class="d-block">seat count:{{getorder().count}}</span>
-                        <span>Date:{{getorder().date}}</span>
-                      </div>
-                    </td>
-                    <td width="20%">
-                      <div class="text-right">
-                        <span class="font-weight-bold">Price: ${{getorder().totalPrice! * getorder().count!}}</span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                  <td width="60%">
+                    <span class="font-weight-bold">{{
+                      getorder().eventName
+                    }}</span>
+                    <div class="product-qty">
+                      <span class="d-block"
+                        >seat count:{{ getorder().count }}</span
+                      >
+                      <span>Date:{{ getorder().date }}</span>
+                    </div>
+                  </td>
+                  <td width="20%">
+                    <div class="text-right">
+                      <span class="font-weight-bold"
+                        >Price: ${{
+                          getorder().totalPrice! * getorder().count!
+                        }}</span
+                      >
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="d-flex justify-content-between footer p-3">
             <span>Need Help? visit our <a href="#"> help center</a></span>
           </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary" routerLink="/order" data-bs-dismiss="modal" (click)="downloadReceipt()">Download Receipt</button>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            routerLink="/order"
+            data-bs-dismiss="modal"
+            (click)="downloadReceipt()"
+          >
+            Download Receipt
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-

@@ -22,25 +22,24 @@ export class AppComponent {
   isLoggedIn: boolean = false;
   isLoginRegister: boolean = false;
 
-  route:any=this.storageService.getRoute();;
+  route: any = this.storageService.getRoute();
 
   constructor(
     private authService: AuthService,
     public loaderService: LoaderService,
     private storageService: StorageService
   ) {
-    
-    let a:URL = new URL(window.location.href);
-    if(a.pathname==="/login" || a.pathname === "/register"){
+    let a: URL = new URL(window.location.href);
+    if (a.pathname === '/login' || a.pathname === '/register') {
       this.authService.isAdmin$.subscribe((isAdmin) => {
         this.isAdmin = isAdmin;
       });
-  
+
       this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
         this.isLoggedIn = isLoggedIn;
       });
-  
-      this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+
+      this.authService.isLoginRegister$.subscribe((isLoginRegister) => {
         this.isLoginRegister = isLoginRegister;
       });
     }
@@ -53,28 +52,28 @@ export class AppComponent {
       this.isLoggedIn = isLoggedIn;
     });
 
-    this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+    this.authService.isLoginRegister$.subscribe((isLoginRegister) => {
       this.isLoginRegister = isLoginRegister;
     });
   }
 
   logout(): void {
-    this.authService.isLoginRegister$.subscribe((isLoginRegister)=>{
+    this.authService.isLoginRegister$.subscribe((isLoginRegister) => {
       this.isLoginRegister = isLoginRegister;
     });
     this.authService.logout();
   }
 
-  isLoginOrRegister(){
-    let a:URL = new URL(window.location.href);
-    let isTrue:Boolean=false;
-    if(a.pathname==="/login" || a.pathname==="/register"){
-      isTrue=true;
+  isLoginOrRegister() {
+    let a: URL = new URL(window.location.href);
+    let isTrue: Boolean = false;
+    if (a.pathname === '/login' || a.pathname === '/register') {
+      isTrue = true;
     }
     return isTrue;
   }
 
-  getRoute(){
+  getRoute() {
     return this.storageService.getRoute();
   }
 }

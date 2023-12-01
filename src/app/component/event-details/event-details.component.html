@@ -1,26 +1,47 @@
 <div class="d-flex container">
-	<div class="overflow-auto container" style="height: 400px;">
-		<h5 class="text-muted fs-1 mt-3">Total Events({{returnEvent().length}})</h5>
-	  <div class="card m-2 mt-3" *ngFor="let a of returnEvent()">
-		<div *ngIf="returnEvent().length==0">
-			<ng-lottie [options]="options"></ng-lottie>
-		</div>
-		  <div class="row g-0 ">
-			  <div class="col-md-4">
-				  <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.id }}" class="img-fluid rounded-start" />
-			  </div>
-			  <div class="col-md-8">
-				  <div class="card-body">
-					  <h5 class="card-title fs-1">{{a.name}}</h5>
-					  <p class="card-text text-muted fs-5">By <b>{{a.host}}</b></p>
-					  <p class="card-text text-muted fs-5">{{a.description}}</p>
-					  <p class="card-text text-muted fs-5"><b>Date:</b> {{a.date}} @ {{a.venue}}</p>
-					  <p class="card-text text-muted fs-5"><b>Available Tickets:</b> {{(a.availableTickets-a.soldTickets!)}}</p>
-					  <p class="card-text text-muted fs-5"><b>Price:</b> {{a.price}}</p> 
-					  <button class="btn btn-primary" (click)="viewSeats(a.id!)" routerLink="/seating">View Tickets</button>
-				  </div>
-			  </div>
-		  </div>
-	  </div>
-	</div>
+  <div class="overflow-auto container" style="height: 400px">
+    <h5 class="text-muted fs-1 mt-3">
+      Total Events({{ returnEvent().length }})
+    </h5>
+    <div class="card m-2 mt-3" *ngFor="let a of returnEvent()">
+      <div *ngIf="returnEvent().length == 0">
+        <ng-lottie [options]="options"></ng-lottie>
+      </div>
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="{{
+              'http://localhost:8080/API/downloadFile/downloadImage/event/' +
+                a.id
+            }}"
+            class="img-fluid rounded-start"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title fs-1">{{ a.name }}</h5>
+            <p class="card-text text-muted fs-5">
+              By <b>{{ a.host }}</b>
+            </p>
+            <p class="card-text text-muted fs-5">{{ a.description }}</p>
+            <p class="card-text text-muted fs-5">
+              <b>Date:</b> {{ a.date }} @ {{ a.venue }}
+            </p>
+            <p class="card-text text-muted fs-5">
+              <b>Available Tickets:</b>
+              {{ a.availableTickets - a.soldTickets! }}
+            </p>
+            <p class="card-text text-muted fs-5"><b>Price:</b> {{ a.price }}</p>
+            <button
+              class="btn btn-primary"
+              (click)="viewSeats(a.id!)"
+              routerLink="/seating"
+            >
+              View Tickets
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

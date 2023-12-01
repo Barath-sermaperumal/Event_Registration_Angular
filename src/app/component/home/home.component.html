@@ -1,49 +1,66 @@
 <style>
-  .h-quote{
+  .h-quote {
     font-weight: 600;
     padding-right: 5px;
   }
-  .c-img{
+  .c-img {
     border-radius: 16px;
   }
-  .c-corousel{
+  .c-corousel {
     position: relative;
   }
-  input{
+  input {
     box-shadow: white !important;
     border-color: white !important;
     color: black !important;
   }
 
   .scrollable-container {
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Keep the content in a single line */
-}
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Keep the content in a single line */
+  }
 
-.scrollable-content {
-  display: inline-block; /* Ensure the content stays in a single line */
-  /* You can set width, padding, margin, etc., for your content */
-}
-
+  .scrollable-content {
+    display: inline-block; /* Ensure the content stays in a single line */
+    /* You can set width, padding, margin, etc., for your content */
+  }
 </style>
 <div class="containers">
-  <p class="d-flex justify-content-center bg-body-tertiary h-quote m-0 p-2">Get All Your Tickets at one place 😉</p>
+  <p class="d-flex justify-content-center bg-body-tertiary h-quote m-0 p-2">
+    Get All Your Tickets at one place 😉
+  </p>
   <!-- corousel -->
   <div class="mb-5">
-  <div id="carouselExampleSlidesOnly" class="carousel slide c-corousel" data-bs-ride="carousel">
-    <div class="carousel-inner ">
-      <div class="carousel-item active">
-        <img src="../../../assets/images/Corousel/gajendraverma.avif" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../../../assets/images/Corousel/aavaadingi.avif" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../../../assets/images/Corousel/nilavemalare.avif" class="d-block w-100 c-img" alt="...">
+    <div
+      id="carouselExampleSlidesOnly"
+      class="carousel slide c-corousel"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../../../assets/images/Corousel/gajendraverma.avif"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../../../assets/images/Corousel/aavaadingi.avif"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../../../assets/images/Corousel/nilavemalare.avif"
+            class="d-block w-100 c-img"
+            alt="..."
+          />
+        </div>
       </div>
     </div>
   </div>
-</div>
   <!-- corousel -->
 
   <!-- Categories -->
@@ -52,9 +69,23 @@
     <div class="row">
       <div class="col-12">
         <div class="scrollable-container">
-          <div class="scrollable-content card shadow col-4 mx-3" style="width: 18rem;" *ngFor="let a of category">
-            <a (click)="viewCategory(a.id!)" routerLink="/eventDetails" class="text-decoration-none">
-              <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/' + a.id }}" class="card-img-top" alt="...">
+          <div
+            class="scrollable-content card shadow col-4 mx-3"
+            style="width: 18rem"
+            *ngFor="let a of category"
+          >
+            <a
+              (click)="viewCategory(a.id!)"
+              routerLink="/eventDetails"
+              class="text-decoration-none"
+            >
+              <img
+                src="{{
+                  'http://localhost:8080/API/downloadFile/downloadImage/' + a.id
+                }}"
+                class="card-img-top"
+                alt="..."
+              />
             </a>
           </div>
         </div>
@@ -69,14 +100,28 @@
     <div class="row">
       <div class="col-12">
         <div class="scrollable-container">
-          <div class="scrollable-content shadow card col-4 mx-3" style="width: 18rem;" *ngFor="let a of event">
-            <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + a.id }}" class="card-img-top" alt="...">
+          <div
+            class="scrollable-content shadow card col-4 mx-3"
+            style="width: 18rem"
+            *ngFor="let a of event"
+          >
+            <img
+              src="{{
+                'http://localhost:8080/API/downloadFile/downloadImage/event/' +
+                  a.id
+              }}"
+              class="card-img-top"
+              alt="..."
+            />
             <div class="card-body">
-              <h5 class="card-title">{{a.name}}</h5>
-              <Button  class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              (click)="viewSeats(a)">View Event</Button>
+              <h5 class="card-title">{{ a.name }}</h5>
+              <Button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="viewSeats(a)"
+                >View Event</Button
+              >
             </div>
           </div>
         </div>
@@ -85,7 +130,6 @@
   </div>
   <!-- products -->
 </div>
-
 
 <div
   class="modal fade"
@@ -108,25 +152,38 @@
       <div class="modal-body p-5">
         <div>
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <img src="{{ 'http://localhost:8080/API/downloadFile/downloadImage/event/' + singleEvent.id }}"
-              class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+            <img
+              src="{{
+                'http://localhost:8080/API/downloadFile/downloadImage/event/' +
+                  singleEvent.id
+              }}"
+              class="img-fluid rounded-3"
+              style="width: 45px"
+              alt="Avatar"
+            />
           </div>
-          <h5 class="mb-0"><b>Event: </b>{{singleEvent.name}}</h5>
-          <h5 class="mb-0"><b>Description: </b> {{singleEvent.description}}</h5>
-          <h5 class="mb-0"><b>Venue: </b> {{singleEvent.venue}}</h5>
-          <h5 class="mb-0"><b>Date: </b> {{singleEvent.date}}</h5>
-          <h5 class="mb-0"><b>Price: </b> {{singleEvent.price}}</h5>
+          <h5 class="mb-0"><b>Event: </b>{{ singleEvent.name }}</h5>
+          <h5 class="mb-0">
+            <b>Description: </b> {{ singleEvent.description }}
+          </h5>
+          <h5 class="mb-0"><b>Venue: </b> {{ singleEvent.venue }}</h5>
+          <h5 class="mb-0"><b>Date: </b> {{ singleEvent.date }}</h5>
+          <h5 class="mb-0"><b>Price: </b> {{ singleEvent.price }}</h5>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary"
-        data-bs-dismiss="modal"
-        routerLink="/seating"
-        (click)="getSeats()"
-        >Book Tickets</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          routerLink="/seating"
+          (click)="getSeats()"
+        >
+          Book Tickets
+        </button>
       </div>
     </div>
   </div>
@@ -134,9 +191,14 @@
 
 <footer class="bg-body-tertiary text-center text-lg-start">
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
     © 2020 Copyright:
-    <a class="text-body" target="_blank" href="https://github.com/Barath-sermaperumal">CodeWithBubblu.com</a>
+    <a
+      class="text-body"
+      target="_blank"
+      href="https://github.com/Barath-sermaperumal"
+      >CodeWithBubblu.com</a
+    >
   </div>
   <!-- Copyright -->
 </footer>

@@ -1,13 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Dancing+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Dancing+Script&display=swap");
 
 :root {
   --primary-50: hsl(0, 0%, 100%);
   --primary-100: #e8e8e8;
-  --primary-300: linear-gradient(111deg, rgba(82,80,255,1) 5%, rgba(219,113,255,1) 83%);
+  --primary-300: linear-gradient(
+    111deg,
+    rgba(82, 80, 255, 1) 5%,
+    rgba(219, 113, 255, 1) 83%
+  );
   /* --primary-500: #00baf2; */
-  --primary-500: linear-gradient(111deg, rgba(82,80,255,1) 5%, rgba(219,113,255,1) 83%);
+  --primary-500: linear-gradient(
+    111deg,
+    rgba(82, 80, 255, 1) 5%,
+    rgba(219, 113, 255, 1) 83%
+  );
   /* --primary-600: #002970; */
-  --primary-600:rgba(82,80,255,1);
+  --primary-600: rgba(82, 80, 255, 1);
   --primary-700: #eb79ff;
   --primary-900: #78350f;
   --secondary-100: #f1f5f9;
@@ -23,31 +31,31 @@
   --border-radius: 4px;
 }
 
-  .screen {
-    background-color: #fff;
-    height: 70px;
-    width: 100%;
-    margin: 15px 0;
-    transform: rotateX(-60deg);
-    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
-  }
+.screen {
+  background-color: #fff;
+  height: 70px;
+  width: 100%;
+  margin: 15px 0;
+  transform: rotateX(-60deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
+}
 
 body {
   font-family: "Roboto,sans-serif";
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   overflow-x: hidden;
 }
 
-.bod{
-  background-color: #F5F5F5;
+.bod {
+  background-color: #f5f5f5;
 }
 
-.heading{
-    font-size: 24px;
-    font-weight: 700;
+.heading {
+  font-size: 24px;
+  font-weight: 700;
 }
 
-.navbar-brand{
+.navbar-brand {
   font-size: 24px;
   font-weight: 500;
 }
@@ -77,7 +85,7 @@ body {
   border: none;
 }
 
-.bg-normal{
+.bg-normal {
   background-color: var(--primary-700) !important;
 }
 
@@ -129,11 +137,11 @@ body {
   background-color: var(--primary-100) !important;
 }
 
-.bg-normal{
+.bg-normal {
   background-color: white;
 }
 
-.bg-primary{
+.bg-primary {
   background-color: var(--primary-500);
 }
 
@@ -160,8 +168,7 @@ body {
 }
 
 .sideBarItem,
-.sideBarItem > a 
-{
+.sideBarItem > a {
   color: var(--primary-500);
   padding: 8px;
 }
@@ -170,7 +177,7 @@ body {
   color: var(--primary-500);
 }
 
-.active{
+.active {
   background-color: white;
   color: black;
 }
@@ -209,17 +216,17 @@ body {
   left: 45%;
 }
 
-.card-header{
+.card-header {
   background: var(--primary-500);
   border: none;
 }
 
-.navbar{
+.navbar {
   background-color: #333545;
   overflow-x: hidden !important;
 }
 
-.header{
+.header {
   overflow-x: hidden !important;
 }
 
@@ -245,11 +252,59 @@ body {
   border-radius: 0px;
 }
 
-.seprator{
+.seprator {
   height: 1px;
   background: var(--primary-300);
 }
 
-.sidebarPosition{
+.sidebarPosition {
   position: fixed;
+}
+
+.seating-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+}
+
+.seat {
+  width: 50px; /* Adjust as needed for your layout */
+  height: 50px; /* Adjust as needed for your layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.seat-demo {
+  width: 30px; /* Adjust as needed for your layout */
+  height: 30px; /* Adjust as needed for your layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.occupied {
+  background: linear-gradient(
+    111deg,
+    rgba(82, 80, 255, 1) 5%,
+    rgba(219, 113, 255, 1) 83%
+  ); /* Change color to indicate occupied seats */
+  color: #fff; /* Change text color for better visibility */
+  cursor: not-allowed; /* Change cursor for occupied seats */
+}
+
+.disabled {
+  /* Styles for a disabled/booked seat */
+  background-color: #cccccc; /* Change the background color for disabled seats */
+  color: #777777; /* Change the text color for better visibility */
+  cursor: not-allowed; /* Change cursor for disabled seats */
 }

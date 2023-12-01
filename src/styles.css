@@ -23,6 +23,14 @@
   --border-radius: 4px;
 }
 
+  .screen {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-60deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
+  }
 
 body {
   font-family: "Roboto,sans-serif";

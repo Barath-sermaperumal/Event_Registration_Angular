@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeService } from 'src/app/service/home.service';
 import { EventService } from 'src/app/service/event.service';
 import { Event } from 'src/app/model/event';
 import { Category } from 'src/app/model/category';

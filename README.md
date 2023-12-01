@@ -40,7 +40,8 @@
 
 
 **MySQL Schema**
-    👉 Image of schema 
+
+<img width="735" alt="Data Model" src="https://github.com/Barath-sermaperumal/Event_Registration_Angular/assets/145639383/d284a52a-affd-48f2-970d-f48cd803e93f">
 
 
 **Demo Video URL**

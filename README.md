@@ -147,14 +147,11 @@
 * Model variable name mis-match while passing from front-end to back-end through ngForm and model- Solved by fixing the data type and changing the variable name
 
 
-### Repository Link
-
-   ### **Front-end Repo link** 
+### **Front-end Repo link** 
    https://github.com/Barath-sermaperumal/Event_Registration_Angular
    
-   ### **Back-end Repo link**  
+### **Back-end Repo link**  
    https://github.com/Barath-sermaperumal/Event_Registration
-
 
 ### **Demo Video URL**
     https://drive.google.com/file/d/1kqmPgRxiysSLPs8kPsO8DV9Qiw66j8tW/view?usp=sharing

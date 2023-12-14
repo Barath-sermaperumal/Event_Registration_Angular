@@ -13,6 +13,7 @@ import { CategoryComponent } from './component/admin/category/category.component
 import { OrderComponent } from './component/admin/order/order.component';
 import { UsercontrolComponent } from './component/admin/usercontrol/usercontrol.component';
 import { UserorderComponent } from './component/userorder/userorder.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
     component: UsercontrolComponent,
     canActivate: [authGuard],
   },
+  { path: 'notFound', component: NotFoundComponent },
 ];
 
 @NgModule({

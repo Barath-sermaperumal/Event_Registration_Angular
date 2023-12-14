@@ -19,6 +19,7 @@ export class ProfileComponent {
 
   constructor(private authService: AuthService) {
     this.user = this.getProfile();
+    this.dp = this.getDp();
   }
 
   user: AppUser = {
@@ -61,5 +62,20 @@ export class ProfileComponent {
       },
     });
     return this.user;
+  }
+
+  dp: String = '';
+  getDp() {
+    this.authService.getDp().subscribe({
+      next: (Response: any) => {
+        this.dp = Response.data.image;
+      },
+      complete: () => {},
+      error(error: Error) {
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    });
+    return this.dp;
   }
 }

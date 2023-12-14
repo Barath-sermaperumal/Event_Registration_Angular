@@ -1,107 +1,130 @@
-<div class="container rounded bg-white mt-5 mb-5">
+<div class="container rounded mt-5 mb-5">
   <div class="row">
     <div class="col-1 bod"></div>
-    <div class="col-4 border-right bod">
+    <div class="col-2 border-right">
       <div
-        class="d-flex mod flex-column align-items-center text-center p-3 py-5"
+        class="d-flex mod flex-column align-items-center text-center p-3 py-5 bod"
       >
-        <img
-          class="rounded-circle mt-5 mod"
-          width="150px"
-          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        /><span class="font-weight-bold">{{ user.name }}</span
+        <div *ngIf="dp == null || dp == ''" class="d-flex">
+          <img
+            class="rounded-circle mt-5 bod"
+            width="200px"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            src="../../../assets/images/Avatar.jpg"
+          />
+        </div>
+        <div *ngIf="dp != null && dp != ''" class="d-flex">
+          <img
+            class="rounded-circle mt-5 bod"
+            width="200px"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            src="{{
+              'http://localhost:8080/API/downloadFile/downloadImage/Dp/' +
+                user.id
+            }}"
+          />
+        </div>
+        <span class="font-weight-bold">{{ user.name }}</span
         ><span class="text-black-50">{{ user.email }}</span
-        ><span>
-          <a class="btn btn-primary">change password</a>
-        </span>
+        ><button class="btn btn-primary" routerLink="/notFound">
+          change password
+        </button>
       </div>
     </div>
     <div class="col-1 bod"></div>
-    <div class="card shadow col-5 p-3 border-right">
+    <div class="card shadow col-7 p-3 border-right">
       <form
-        class="p-3 py-5"
+        class="p-3 py-3"
         #profileForm="ngForm"
         (ngSubmit)="updateProfile(profileForm)"
       >
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="text-right">Profile Settings</h4>
-        </div>
+        <div class="d-flex flex-column align-items-center mb-3">
+          <div class="fs-1">Profile Settings</div>
 
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <input
-              type="hidden"
-              class="form-control mb-3"
-              placeholder="Name"
-              ngModel
-              name="id"
-              [ngModel]="user.id"
-            />
-          </div>
-          <div class="col-md-12">
-            <input
-              type="text"
-              class="form-control mb-3"
-              placeholder="Name"
-              ngModel
-              name="name"
-              [ngModel]="user.name"
-            />
-          </div>
-          <div class="col-md-12">
-            <input
-              type="text"
-              class="form-control mb-3"
-              placeholder="Username"
-              name="username"
-              ngModel
-              [ngModel]="user.username"
-            />
-          </div>
-          <div class="col-md-12">
-            <input
-              type="email"
-              class="form-control mb-3"
-              placeholder="email"
-              name="email"
-              ngModel
-              [ngModel]="user.email"
-            />
-          </div>
-          <div class="col-md-12">
-            <input
-              type="number"
-              class="form-control mb-3"
-              placeholder="mobile"
-              name="phone"
-              ngModel
-              [ngModel]="user.phone"
-            />
-          </div>
-          <div class="col-md-12">
-            <input
-              type="text"
-              class="form-control mb-3"
-              placeholder="gender"
-              name="gender"
-              ngModel
-              [ngModel]="user.gender"
-            />
-          </div>
-          <div class="col-md-12">
-            <input
-              type="text"
-              class="form-control mb-3"
-              placeholder="address"
-              name="address"
-              ngModel
-              [ngModel]="user.address"
-            />
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <input
+                type="hidden"
+                class="form-control mb-3"
+                placeholder="Name"
+                ngModel
+                name="id"
+                [ngModel]="user.id"
+              />
+            </div>
+
+            <div class="col-md-11 d-flex justify-content-center">
+              <input
+                type="text"
+                class="form-control mb-3"
+                placeholder="Name"
+                ngModel
+                name="name"
+                [ngModel]="user.name"
+              />
+            </div>
+
+            <div class="d-flex justify-content-between col-11">
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  placeholder="Username"
+                  name="username"
+                  ngModel
+                  [ngModel]="user.username"
+                />
+              </div>
+              <div class="col-md-5">
+                <input
+                  type="text"
+                  class="form-control mb-3 px-2"
+                  placeholder="gender"
+                  name="gender"
+                  ngModel
+                  [ngModel]="user.gender"
+                />
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between col-11">
+              <div class="col-md-6">
+                <input
+                  type="email"
+                  class="form-control mb-3"
+                  placeholder="email"
+                  name="email"
+                  ngModel
+                  [ngModel]="user.email"
+                />
+              </div>
+              <div class="col-md-5">
+                <input
+                  type="number"
+                  class="form-control mb-3"
+                  placeholder="mobile"
+                  name="phone"
+                  ngModel
+                  [ngModel]="user.phone"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-11">
+              <textarea
+                type="text"
+                class="form-control mb-3"
+                placeholder="address"
+                name="address"
+                ngModel
+                [ngModel]="user.address"
+              ></textarea>
+            </div>
           </div>
         </div>
-        <div class="mt-5 text-center">
+        <div class="text-center">
           <button class="btn btn-primary profile-button" type="submit">
             Save Profile
           </button>
@@ -131,15 +154,22 @@
         ></button>
       </div>
       <div class="modal-body d-flex justify-content-center">
-        <div *ngIf="user.image == null" class="d-flex">
+        <div *ngIf="dp == null || dp == ''" class="d-flex">
           <img
             class="rounded-circle"
             width="250px"
             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
           />
         </div>
-        <div *ngIf="user.image != null" class="d-flex">
-          <img src="" />
+        <div *ngIf="dp != null && dp != ''" class="d-flex">
+          <img
+            class="rounded-circle"
+            width="250px"
+            src="{{
+              'http://localhost:8080/API/downloadFile/downloadImage/Dp/' +
+                user.id
+            }}"
+          />
         </div>
       </div>
       <div class="modal-footer">
@@ -158,3 +188,16 @@
     </div>
   </div>
 </div>
+<footer class="bg-body-tertiary text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
+    © 2020 Copyright:
+    <a
+      class="text-body"
+      target="_blank"
+      href="https://github.com/Barath-sermaperumal"
+      >CodeWithBubblu.com</a
+    >
+  </div>
+  <!-- Copyright -->
+</footer>

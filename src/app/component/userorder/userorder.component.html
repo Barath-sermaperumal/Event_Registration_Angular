@@ -1,28 +1,8 @@
-<style>
-  .gradient-custom {
-    /* fallback for old browsers */
-    background: #cd9cf2;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(
-      to top left,
-      rgba(205, 156, 242, 1),
-      rgba(246, 243, 255, 1)
-    );
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(
-      to top left,
-      rgba(205, 156, 242, 1),
-      rgba(246, 243, 255, 1)
-    );
-  }
-</style>
 <section class="">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-11">
-        <div class="card" style="border-radius: 10px">
+        <div class="card">
           <div class="card-header px-4 py-5">
             <h5 class="text-white mb-0">
               Thanks for your Orders, <span>{{ name }}</span
@@ -41,7 +21,7 @@
             <div
               class="d-flex justify-content-between align-items-center mb-4"
             ></div>
-            <div class="card shadow-0 border mb-4" *ngFor="let a of order">
+            <div class="card shadow border mb-4" *ngFor="let a of order">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-2">
@@ -81,7 +61,7 @@
                     <p class="text-black mb-0">{{ a.bookedSeatsString }}</p>
                   </div>
                   <div
-                    class="col-md-2 text-center d-flex flex-column justify-content-center align-items-center"
+                    class="col-md-1 text-center d-flex flex-column justify-content-center align-items-center"
                   >
                     <p class="text-muted mb-0">Price</p>
                     <p class="text-black mb-0">${{ a.totalPrice }}</p>
@@ -102,3 +82,16 @@
     </div>
   </div>
 </section>
+<footer class="bg-body-tertiary text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
+    © 2020 Copyright:
+    <a
+      class="text-body"
+      target="_blank"
+      href="https://github.com/Barath-sermaperumal"
+      >CodeWithBubblu.com</a
+    >
+  </div>
+  <!-- Copyright -->
+</footer>

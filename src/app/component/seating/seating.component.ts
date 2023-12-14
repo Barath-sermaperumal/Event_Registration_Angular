@@ -106,16 +106,19 @@ export class SeatingComponent {
 
   order: Orderconfirmation = {};
   currentDate: Date = new Date();
+
   getorder() {
     this.order = JSON.parse(localStorage.getItem('orderconfirmation')!);
-    this.order.orderDate = this.currentDate;
+
     return this.order;
   }
 
   downloadReceipt() {
     // Create a sample receipt content (you can replace this with your actual receipt data)
     const receiptContent =
-      'Order ID: \nDate: ' +
+      'Order ID: ' +
+      this.getorder().id +
+      '\nDate: ' +
       this.currentDate +
       '\nTotal: ' +
       this.getorder().totalPrice! * this.getorder().count! +

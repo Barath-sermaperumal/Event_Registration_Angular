@@ -36,7 +36,7 @@
   *ngIf="isLoggedIn && !isLoginOrRegister()"
   class="d-flex flex-column align-items-around"
 >
-  <div class="row">
+  <div class="row" style="gap: 0">
     <header class="navbar">
       <div>
         <a class="navbar-brand px-3 text-black" routerLink="/"
@@ -75,7 +75,7 @@
     <div class="sidebar border border-right col-2 p-0 sidePosition">
       <div class="bg-body-tertiary vh-100 sidePosition" tabindex="-1">
         <div class="d-flex flex-column p-0 pt-3 overflow-y-auto">
-          <ul class="nav flex-column">
+          <ul class="nav flex-column affix">
             <li
               class="nav-item d-flex align-items-center px-5 sideBarItem"
               [ngClass]="getRoute() === 'admin' ? 'active' : ''"
@@ -133,7 +133,7 @@
         </div>
       </div>
     </div>
-    <main class="col-10 px-4">
+    <main class="col-9 px-4">
       <router-outlet></router-outlet>
     </main>
   </div>

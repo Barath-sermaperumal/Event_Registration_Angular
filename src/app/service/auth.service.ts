@@ -112,4 +112,11 @@ export class AuthService {
       user
     );
   }
+
+  getDp(): Observable<AppResponse> {
+    const id: Number = this.storageService.getLoggedInUser().id!;
+    return this.http.get<AppResponse>(
+      `http://localhost:8080/EventRegistration/API/User/profile/DP/${id}`
+    );
+  }
 }

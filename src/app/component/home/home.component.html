@@ -1,6 +1,5 @@
 <style>
   .h-quote {
-    font-weight: 600;
     padding-right: 5px;
   }
   .c-img {
@@ -9,6 +8,7 @@
   .c-corousel {
     position: relative;
   }
+
   input {
     box-shadow: white !important;
     border-color: white !important;
@@ -27,7 +27,7 @@
 </style>
 <div class="containers">
   <p class="d-flex justify-content-center bg-body-tertiary h-quote m-0 p-2">
-    Get All Your Tickets at one place 😉
+    <b>Get All Your Tickets at one place 😉</b>
   </p>
   <!-- corousel -->
   <div class="mb-5">
@@ -64,13 +64,13 @@
   <!-- corousel -->
 
   <!-- Categories -->
-  <div class="container mb-5">
-    <h3 class="container mb-3 heading">GENRES</h3>
+  <div class="px-2 mb-5">
+    <h3 class="px-4 mb-3 heading fs-1">GENRES</h3>
     <div class="row">
       <div class="col-12">
         <div class="scrollable-container">
           <div
-            class="scrollable-content card shadow col-4 mx-3"
+            class="scrollable-content card rounded-circle shadow col-4 mx-3"
             style="width: 18rem"
             *ngFor="let a of category"
           >
@@ -83,7 +83,7 @@
                 src="{{
                   'http://localhost:8080/API/downloadFile/downloadImage/' + a.id
                 }}"
-                class="card-img-top"
+                class="card-img-top rounded-circle"
                 alt="..."
               />
             </a>
@@ -95,8 +95,8 @@
   <!-- Categories -->
 
   <!-- products -->
-  <div class="container mb-3">
-    <h3 class="container mb-3 heading">Events</h3>
+  <div class="px-2 mb-3">
+    <h3 class="px-4 mb-3 heading fs-1">Events</h3>
     <div class="row">
       <div class="col-12">
         <div class="scrollable-container">
@@ -152,23 +152,28 @@
       <div class="modal-body p-5">
         <div>
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <img
-              src="{{
-                'http://localhost:8080/API/downloadFile/downloadImage/event/' +
-                  singleEvent.id
-              }}"
-              class="img-fluid rounded-3"
-              style="width: 45px"
-              alt="Avatar"
-            />
+            <div class="col-6">
+              <img
+                height="100vh"
+                src="{{
+                  'http://localhost:8080/API/downloadFile/downloadImage/event/' +
+                    singleEvent.id
+                }}"
+                class="img-fluid rounded-3 pe-3"
+                style="width: 50vw"
+                alt="Avatar"
+              />
+            </div>
+            <div class="col-6">
+              <h5 class="mb-0"><b>Event: </b>{{ singleEvent.name }}</h5>
+              <h5 class="mb-0">
+                <b>Description: </b> {{ singleEvent.description }}
+              </h5>
+              <h5 class="mb-0"><b>Venue: </b> {{ singleEvent.venue }}</h5>
+              <h5 class="mb-0"><b>Date: </b> {{ singleEvent.date }}</h5>
+              <h5 class="mb-0"><b>Price: </b> {{ singleEvent.price }}</h5>
+            </div>
           </div>
-          <h5 class="mb-0"><b>Event: </b>{{ singleEvent.name }}</h5>
-          <h5 class="mb-0">
-            <b>Description: </b> {{ singleEvent.description }}
-          </h5>
-          <h5 class="mb-0"><b>Venue: </b> {{ singleEvent.venue }}</h5>
-          <h5 class="mb-0"><b>Date: </b> {{ singleEvent.date }}</h5>
-          <h5 class="mb-0"><b>Price: </b> {{ singleEvent.price }}</h5>
         </div>
       </div>
       <div class="modal-footer">

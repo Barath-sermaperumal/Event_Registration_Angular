@@ -23,6 +23,7 @@ import { CategoryComponent } from './component/admin/category/category.component
 import { OrderComponent } from './component/admin/order/order.component';
 import { UserorderComponent } from './component/userorder/userorder.component';
 import { DataService } from './service/data.service';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 export function playerFactory() {
   return player;
@@ -43,6 +44,7 @@ export function playerFactory() {
     CategoryComponent,
     OrderComponent,
     UserorderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

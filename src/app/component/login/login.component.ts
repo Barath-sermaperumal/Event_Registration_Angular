@@ -5,6 +5,7 @@ import { AppResponse } from 'src/app/model/appResponse';
 import { Login } from 'src/app/model/login';
 import { AppUser } from 'src/app/model/appUser';
 import { AuthService } from 'src/app/service/auth.service';
+import { EventService } from 'src/app/service/event.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent {
   isLoggedIn: boolean = false;
   isLoginRegister: boolean = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private eventService:EventService) {
     let a: URL = new URL(window.location.href);
     if (a.pathname === '/login' || a.pathname === '/register') {
       this.authService.isAdmin$.subscribe((isAdmin) => {
@@ -45,6 +46,7 @@ export class LoginComponent {
       username: this.username,
       password: this.password,
     };
+
     this.authService.login(login).subscribe({
       next: (response: AppResponse) => {
         let user: AppUser = response.data;
@@ -52,11 +54,21 @@ export class LoginComponent {
       },
       error: (err) => {
         console.log(err);
-
         let message: String = err.error.error.message;
         this.error = message.includes(',') ? message.split(',')[0] : message;
       },
       complete: () => console.log('There are no more action happen.'),
+    });
+
+    this.eventService.getAllEvents().subscribe({
+      next: (response: any) => {
+        localStorage.setItem("Events",JSON.stringify(response.data))
+      },
+      complete: () => {},
+      error: (error: Error) => {
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
     });
   }
 }

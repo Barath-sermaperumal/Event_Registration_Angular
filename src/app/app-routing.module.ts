@@ -14,6 +14,7 @@ import { OrderComponent } from './component/admin/order/order.component';
 import { UsercontrolComponent } from './component/admin/usercontrol/usercontrol.component';
 import { UserorderComponent } from './component/userorder/userorder.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
+import { EventsComponent } from './component/events/events.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   { path: 'notFound', component: NotFoundComponent },
+  { path: 'events', component: EventsComponent, canActivate: [authGuard],}
 ];
 
 @NgModule({

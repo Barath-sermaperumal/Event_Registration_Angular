@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { SeatingService } from 'src/app/service/seating.service';
 import { Event } from 'src/app/model/event';
@@ -28,6 +29,7 @@ export class SeatingComponent {
   // Default number of columns
 
   constructor(
+    private router: Router,
     private seatingService: SeatingService,
     private bookingService: BookingService
   ) {
@@ -101,6 +103,16 @@ export class SeatingComponent {
         console.log('Name:', error.name);
       },
     });
+    this.bookingService.sendEmail().subscribe({
+      next: (response: any) => {
+        console.log(response);
+      },
+      complete: () => {},
+      error: (error: Error) => {
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    });
     return seat;
   }
 
@@ -138,5 +150,9 @@ export class SeatingComponent {
 
     // Cleanup: remove the temporary link element
     document.body.removeChild(link);
+
+    this.router.navigate(['/order'], { replaceUrl: true });
   }
+
+
 }

@@ -19,6 +19,11 @@
         </div>
         <div class="col-md-7">
           <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <span class="fs-1 blink-soft">{{getDiscountPercent()}}% offer</span>
+              <div>Discount</div>
+              <!-- <ng-lottie [options]="options" height="10vh"></ng-lottie> -->
+            </div>
             <h5 class="card-title fs-1">{{ a.name }}</h5>
             <p class="card-text text-muted fs-5">
               By <b>{{ a.host }}</b>
@@ -29,7 +34,7 @@
             </p>
             <p class="card-text text-muted fs-5">
               <b>Available Tickets:</b>
-              {{ a.availableTickets - a.soldTickets! }}
+              {{ a.availableTickets! - a.soldTickets! }}
             </p>
             <p class="card-text text-muted fs-5"><b>Price:</b> {{ a.price }}</p>
             <button class="btn btn-primary" (click)="runSleep(a.id!)">
@@ -41,16 +46,4 @@
     </div>
   </div>
 </div>
-<footer class="bg-body-tertiary text-center text-lg-start">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
-    © 2020 Copyright:
-    <a
-      class="text-body"
-      target="_blank"
-      href="https://github.com/Barath-sermaperumal"
-      >CodeWithBubblu.com</a
-    >
-  </div>
-  <!-- Copyright -->
-</footer>
+

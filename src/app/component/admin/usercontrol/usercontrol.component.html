@@ -1,3 +1,4 @@
+<section class="overflow-auto container"  style="height: 80vh">
 <div class="d-flex justify-content-between mt-4 mb-4">
   <h1>Users</h1>
 </div>
@@ -6,9 +7,10 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Phone</th>
+      <th class="text-center">Phone</th>
       <th>Address</th>
       <th>Role</th>
+      <th class="text-center">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -24,22 +26,26 @@
             style="width: 45px; height: 45px"
           />
           <div class="ms-3">
-            <p class="fw-bold mb-1">{{ a.name }}</p>
+            <p class=" mb-1">{{ a.name }}</p>
           </div>
         </div>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.email }}</p>
+        <p class=" mb-1">{{ a.email }}</p>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.phone }}</p>
+        <p class=" mb-1 text-center">{{ a.phone }}</p>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.address }}</p>
+        <p class=" mb-1">{{ a.address }}</p>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.role }}</p>
+        <p class=" mb-1 ">{{ a.role }}</p>
+      </td>
+      <td class="text-center">
+        <i class="fa-solid fa-trash" (click)="deleteUser(a.id!)"></i>
       </td>
     </tr>
   </tbody>
 </table>
+</section>

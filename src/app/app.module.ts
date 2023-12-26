@@ -24,6 +24,7 @@ import { OrderComponent } from './component/admin/order/order.component';
 import { UserorderComponent } from './component/userorder/userorder.component';
 import { DataService } from './service/data.service';
 import { NotFoundComponent } from './component/not-found/not-found.component';
+import { EventsComponent } from './component/events/events.component';
 
 export function playerFactory() {
   return player;
@@ -45,6 +46,7 @@ export function playerFactory() {
     OrderComponent,
     UserorderComponent,
     NotFoundComponent,
+    EventsComponent,
   ],
   imports: [
     BrowserModule,

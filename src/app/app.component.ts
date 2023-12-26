@@ -4,6 +4,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { LoaderService } from './service/loader.service';
 import { RouterModule } from '@angular/router';
 import { StorageService } from './service/storage.service';
+import { DiscountService } from './service/discount.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ export class AppComponent {
   constructor(
     private authService: AuthService,
     public loaderService: LoaderService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private discountService: DiscountService
   ) {
     let a: URL = new URL(window.location.href);
     if (a.pathname === '/login' || a.pathname === '/register') {
@@ -55,6 +57,18 @@ export class AppComponent {
     this.authService.isLoginRegister$.subscribe((isLoginRegister) => {
       this.isLoginRegister = isLoginRegister;
     });
+
+
+    this.discountService.getAllDiscounts().subscribe({
+      next(Response:any){
+        localStorage.setItem("Discounts",JSON.stringify(Response.data));
+      },
+      complete: () => {},
+      error: (error: Error) => {
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    })
   }
 
   logout(): void {

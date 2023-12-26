@@ -158,6 +158,16 @@ body {
   white-space: nowrap;
 }
 
+.admindashboard{
+  overflow-y: hidden;
+  height: 84vh;
+}
+
+.dashboard{
+  margin-left: 2%;
+}
+
+
 .sideBarActive,
 .sideBarActive > a,
 .sideBarActive > a:hover,
@@ -224,6 +234,7 @@ body {
 .navbar {
   background-color: #333545;
   overflow-x: hidden !important;
+
 }
 
 .header {
@@ -273,8 +284,8 @@ body {
 }
 
 .seat {
-  width: 50px; /* Adjust as needed for your layout */
-  height: 50px; /* Adjust as needed for your layout */
+  width: 45px; /* Adjust as needed for your layout */
+  height: 45px; /* Adjust as needed for your layout */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -304,7 +315,40 @@ body {
 
 .disabled {
   /* Styles for a disabled/booked seat */
-  background-color: #cccccc; /* Change the background color for disabled seats */
-  color: #777777; /* Change the text color for better visibility */
+  background-color: #ff4848; /* Change the background color for disabled seats */
+  color: #f7f7f7; /* Change the text color for better visibility */
   cursor: not-allowed; /* Change cursor for disabled seats */
+}
+
+.filter-icon{
+  cursor:pointer;
+}
+
+.scroll-container {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.scroll-content {
+  display: flex;
+  /* Add styles as needed */
+}
+
+.float-button{
+  position: fixed;
+  margin-top: 70vh;
+  margin-left: 73vw;
+  background: var(--primary-300);
+  border-radius: 50px;
+}
+
+.blink-soft {
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

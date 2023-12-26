@@ -1,3 +1,4 @@
+<section class="overflow-auto container"  style="height: 80vh">
 <div class="d-flex justify-content-between mt-4 mb-4">
   <h1>Orders</h1>
 </div>
@@ -6,9 +7,9 @@
     <tr>
       <th>Name</th>
       <th>Title</th>
-      <th>Status</th>
-      <th>Date</th>
-      <th>Ticket Details</th>
+      <th class="text-center">Status</th>
+      <th class="text-center">Date</th>
+      <th class="text-center">Ticket Details</th>
     </tr>
   </thead>
   <tbody>
@@ -25,22 +26,23 @@
             style="width: 45px; height: 45px"
           />
           <div class="ms-3">
-            <p class="fw-bold mb-1">{{ a.userName }}</p>
+            <p class=" mb-1">{{ a.userName }}</p>
           </div>
         </div>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.eventName }}</p>
+        <p class=" mb-1">{{ a.eventName }}</p>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.date }}</p>
+        <p class=" mb-1 text-center">{{ a.date }}</p>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.count }}</p>
+        <p class=" mb-1 text-center">{{ a.count }}</p>
       </td>
       <td>
-        <p class="fw-bold mb-1">{{ a.totalPrice }}</p>
+        <p class=" mb-1 text-center">{{ a.totalPrice }}</p>
       </td>
     </tr>
   </tbody>
 </table>
+</section>

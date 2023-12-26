@@ -22,7 +22,18 @@
               name="name"
               placeholder="Enter your Name"
               [(ngModel)]="user.name"
+              ngModel
+              required
+              minlength="3"
+              pattern="^[A-Za-z\s'-]+$"
+              #modelName="ngModel"
+              [ngClass]="
+                modelName.invalid && modelName.dirty ? 'is-invalid' : ''
+              "
             />
+            <p class="error" *ngIf="modelName.invalid && modelName.dirty">
+              Enter valid name
+            </p>
           </div>
 
           <div class="form-outline mb-4 col-12">
@@ -33,10 +44,21 @@
               name="username"
               placeholder="Enter your username"
               [(ngModel)]="user.username"
+              ngModel
+              required
+              minlength="5"
+              pattern="^[A-Za-z0-9\s'-]+$"
+              #modelUserName="ngModel"
+              [ngClass]="
+                modelUserName.invalid && modelUserName.dirty ? 'is-invalid' : ''
+              "
             />
+            <p class="error" *ngIf="modelName.invalid && modelName.dirty">
+              Enter valid Username
+            </p>
           </div>
 
-          <!-- Name input -->
+          <!-- Email input -->
           <div class="form-outline mb-4 col-12">
             <input
               type="email"
@@ -45,7 +67,17 @@
               name="email"
               placeholder="Enter your Email"
               [(ngModel)]="user.email"
+              ngModel
+              required
+              pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+$"
+              #modelEmail="ngModel"
+              [ngClass]="
+                modelEmail.invalid && modelEmail.dirty ? 'is-invalid' : ''
+              "
             />
+            <p class="error" *ngIf="modelEmail.invalid && modelEmail.dirty">
+              Enter valid Email
+            </p>
           </div>
 
           <div class="row col-12 d-flex justify-content-between">
@@ -78,8 +110,8 @@
             <span>Already registered?</span>
             <a
               routerLink="/login"
-              class="text-primary text-decoration-none px-2"
-              >Login here</a
+              class="text-muted"
+              > Login here</a
             >
           </div>
 

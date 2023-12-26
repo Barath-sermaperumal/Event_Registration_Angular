@@ -38,15 +38,15 @@ export class RegisterComponent {
     let newUser: AppUser = form.value;
     this.authService.registerUser(newUser).subscribe({
       next: (Response: any) => {
-        this.user = Response.data;
+        this.user=Response.data;
         this.router.navigate(['/login']);
       },
       complete: () => {},
-      error: (error: Error) => {
+      error: (error) => {
+        this.error=error.error.error.message;
         console.log('Message:', error.message);
         console.log('Name:', error.name);
       },
     });
-    return this.user;
   }
 }

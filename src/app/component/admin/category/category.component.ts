@@ -130,4 +130,8 @@ export class CategoryComponent {
       this.file = fileInput.files[0];
     }
   }
+
+  resetdata(form:NgForm){
+    form.resetForm();
+  }
 }

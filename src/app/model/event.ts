@@ -8,11 +8,11 @@ export interface Event {
   date: String;
   venue: String;
   host: String;
-  price: number;
-  availableTickets: number;
+  price: number | null;
+  availableTickets: number | null;
   soldTickets?: number;
   categoryName?: string;
-  categoryId?: number;
+  categoryId?: number | null;
   order?: Order[];
   seats?: String[];
 }

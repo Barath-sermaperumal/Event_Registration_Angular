@@ -119,4 +119,10 @@ export class AuthService {
       `http://localhost:8080/EventRegistration/API/User/profile/DP/${id}`
     );
   }
+
+  deleteUser(id:number){
+    return this.http.delete<AppResponse>(
+      `http://localhost:8080/EventRegistration/API/Admin/UserControl/deleteUser/${id}`
+    );
+  }
 }

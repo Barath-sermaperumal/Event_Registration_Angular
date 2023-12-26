@@ -19,6 +19,10 @@ export class EventDetailsComponent {
     path: '/assets/auth.json',
   };
 
+  options1: AnimationOptions = {
+    path: '/assets/discount.json',
+  };
+
   constructor(
     private eventService: EventService,
     private seatingService: SeatingService,
@@ -89,5 +93,67 @@ export class EventDetailsComponent {
     } catch (error) {
       console.error('An error occurred:', error);
     }
+  }
+
+  getDate(date: any): String {
+    return new Date(date).toISOString().split('T')[0];
+  }
+
+  getDiscounts(): boolean {
+    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+    let date: any = this.getDate(new Date());
+    for(let discount of discounts)
+    {
+      let fromDate = this.getDate(discount.fromDate);
+      let toDate = this.getDate(discount.toDate);
+      if(date>= fromDate && date<=toDate)
+      {
+        return true;
+      }
+
+    }
+
+    return false;
+  }
+
+  getDiscountPercent():number
+  {
+    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+    let date: any = this.getDate(new Date());
+    for(let discount of discounts)
+    {
+      let fromDate = this.getDate(discount.fromDate);
+      let toDate = this.getDate(discount.toDate);
+      if(date>= fromDate && date<=toDate)
+      {
+        return discount.discount;
+      }
+
+    }
+    return 0;
+  }
+
+  getDiscountPrice(price:number):number{
+    let discountPercent:number = this.getDiscountPercent();
+    return (price-(discountPercent/100)*price);
+  }
+
+  getDiscountDescription():String
+  {
+    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+    let date: any = this.getDate(new Date());
+
+    for(let discount of discounts)
+    {
+      let fromDate = this.getDate(discount.fromDate);
+      let toDate = this.getDate(discount.toDate);
+      console.log(date,fromDate,toDate);
+
+      if(date>= fromDate && date<=toDate)
+      {
+        return discount.description;
+      }
+    }
+    return "";
   }
 }

@@ -23,6 +23,7 @@
       class="row d-flex justify-content-center"
       *ngFor="let row of localSeats"
     >
+
       <div
         class="seat"
         *ngFor="let seat of row"
@@ -48,7 +49,7 @@
 
 <!-- modal 2 -->
 <div
-  class="modal fade"
+  class="modal"
   id="exampleModal"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
@@ -156,7 +157,7 @@
           data-bs-toggle="modal"
           data-bs-target="#reciept"
         >
-          Save changes
+          Confirm Order
         </button>
       </div>
     </div>
@@ -165,7 +166,7 @@
 
 <!-- Modal -->
 <div
-  class="modal fade"
+  class="modal"
   id="reciept"
   tabindex="-1"
   aria-labelledby="recieptLabel"
@@ -281,9 +282,8 @@
           <button
             type="button"
             class="btn btn-primary"
-            routerLink="/order"
-            data-bs-dismiss="modal"
             (click)="downloadReceipt()"
+            data-bs-dismiss="modal"
           >
             Download Receipt
           </button>

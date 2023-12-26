@@ -24,4 +24,17 @@ export class UsercontrolComponent {
       },
     });
   }
+
+  deleteUser(id:number){
+    this.authService.deleteUser(id).subscribe({
+      next: (response: any) => {
+        this.user = response.data;
+      },
+      complete: () => {},
+      error: (error: Error) => {
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    });
+  }
 }

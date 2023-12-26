@@ -27,7 +27,9 @@
 </style>
 <div class="containers">
   <p class="d-flex justify-content-center bg-body-tertiary h-quote m-0 p-2">
-    <b>Get All Your Tickets at one place 😉</b>
+    <marquee
+      ><b>{{ getDiscountDescription() }}</b></marquee
+    >
   </p>
   <!-- corousel -->
   <div class="mb-5">
@@ -64,14 +66,21 @@
   <!-- corousel -->
 
   <!-- Categories -->
-  <div class="px-2 mb-5">
-    <h3 class="px-4 mb-3 heading fs-1">GENRES</h3>
-    <div class="row">
-      <div class="col-12">
-        <div class="scrollable-container">
+  <section class="d-flex justify-content-center">
+    <div class="px-2 mb-5 col-12">
+      <div class="col-10 d-flex">
+        <div class="col-9">
+          <h3 class="px-4 mb-3 heading col-5 fs-1">GENRES</h3>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <i class="bi bi-chevron-left mx-4" (click)="scrollRight()"></i>
+        <div class="scroll-container">
           <div
-            class="scrollable-content card rounded-circle shadow col-4 mx-3"
-            style="width: 18rem"
+            class="scroll-content card rounded-circle mx-2 mb-3 shadow col-4"
+            style="width: 17rem"
+            #scrollContent
             *ngFor="let a of category"
           >
             <a
@@ -84,25 +93,29 @@
                   'http://localhost:8080/API/downloadFile/downloadImage/' + a.id
                 }}"
                 class="card-img-top rounded-circle"
-                alt="..."
               />
             </a>
           </div>
         </div>
+        <i class="bi bi-chevron-right mx-3" (click)="scrollRight()"></i>
       </div>
     </div>
-  </div>
+  </section>
   <!-- Categories -->
 
   <!-- products -->
-  <div class="px-2 mb-3">
-    <h3 class="px-4 mb-3 heading fs-1">Events</h3>
-    <div class="row">
-      <div class="col-12">
-        <div class="scrollable-container">
+  <section class="d-flex justify-content-center">
+    <div class="px-2 mb-3 col-12">
+      <div class="d-flex justify-content-between">
+        <h3 class="px-4 mb-3 heading fs-1">Events</h3>
+        <button class="btn btn-primary mx-3" routerLink="/events">View All Events</button>
+      </div>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-chevron-left mx-4" (click)="scrollRight()"></i>
+        <div class="scroll-container">
           <div
-            class="scrollable-content shadow card col-4 mx-3"
-            style="width: 18rem"
+            class="scroll-content shadow card col-4 mx-2"
+            style="width: 17rem"
             *ngFor="let a of event"
           >
             <img
@@ -125,9 +138,10 @@
             </div>
           </div>
         </div>
+        <i class="bi bi-chevron-right mx-3" (click)="scrollRight()"></i>
       </div>
     </div>
-  </div>
+  </section>
   <!-- products -->
 </div>
 
@@ -165,13 +179,25 @@
               />
             </div>
             <div class="col-6">
+              <div class="d-flex justify-content-between">
+                <span class="fs-2 blink-soft">{{getDiscountPercent()}}% offer</span>
+                <ng-lottie [options]="options" height="10vh"></ng-lottie>
+              </div>
               <h5 class="mb-0"><b>Event: </b>{{ singleEvent.name }}</h5>
               <h5 class="mb-0">
                 <b>Description: </b> {{ singleEvent.description }}
               </h5>
               <h5 class="mb-0"><b>Venue: </b> {{ singleEvent.venue }}</h5>
               <h5 class="mb-0"><b>Date: </b> {{ singleEvent.date }}</h5>
-              <h5 class="mb-0"><b>Price: </b> {{ singleEvent.price }}</h5>
+              <h5 class="mb-0" *ngIf="getDiscountPercent()">
+                <b>Price: </b>
+                <span style="text-decoration: line-through" class="text-muted"
+                  >${{ singleEvent.price }}.00</span
+                ><span> ${{ getDiscountPrice(singleEvent.price!) }}</span>
+              </h5>
+              <h5 class="mb-0" *ngIf="!getDiscountPercent()">
+                <b>Price: </b> {{ singleEvent.price }}
+              </h5>
             </div>
           </div>
         </div>
@@ -193,17 +219,3 @@
     </div>
   </div>
 </div>
-
-<footer class="bg-body-tertiary text-center text-lg-start">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
-    © 2020 Copyright:
-    <a
-      class="text-body"
-      target="_blank"
-      href="https://github.com/Barath-sermaperumal"
-      >CodeWithBubblu.com</a
-    >
-  </div>
-  <!-- Copyright -->
-</footer>

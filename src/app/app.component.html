@@ -6,7 +6,10 @@
     border-radius: 20px;
   }
 </style>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+</head>
 <div *ngIf="!isLoggedIn" class="d-flex flex-column align-items-around">
   <div class="row" *ngIf="!isLoginOrRegister()">
     <header class="navbar">
@@ -30,6 +33,19 @@
     </header>
   </div>
   <router-outlet />
+  <footer class="bg-body-tertiary text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
+      © 2020 Copyright:
+      <a
+        class="text-body"
+        target="_blank"
+        href="https://github.com/Barath-sermaperumal"
+        >CodeWithBubblu.com</a
+      >
+    </div>
+    <!-- Copyright -->
+  </footer>
 </div>
 
 <div
@@ -71,7 +87,7 @@
     <p *ngIf="isAdmin" class="seprator p-0 m-0"></p>
   </div>
 
-  <div *ngIf="isAdmin" class="vh-100 row flex-grow-1">
+  <div *ngIf="isAdmin" class="row flex-grow-1 admindashboard">
     <div class="sidebar border border-right col-2 p-0 sidePosition">
       <div class="bg-body-tertiary vh-100 sidePosition" tabindex="-1">
         <div class="d-flex flex-column p-0 pt-3 overflow-y-auto">
@@ -133,13 +149,27 @@
         </div>
       </div>
     </div>
-    <main class="col-9 px-4">
+    <main class="container dashboard col-9">
       <router-outlet></router-outlet>
     </main>
   </div>
-  <div *ngIf="!isAdmin">
+
+  <div *ngIf="!isAdmin" >
     <router-outlet></router-outlet>
   </div>
+  <footer class="bg-body-tertiary text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
+      © 2023 Copyright:
+      <a
+        class="text-body"
+        target="_blank"
+        href="https://github.com/Barath-sermaperumal"
+        >CodeWithBubblu.com</a
+      >
+    </div>
+    <!-- Copyright -->
+  </footer>
 </div>
 
 <div *ngIf="loaderService.isLoading | async" class="loader">

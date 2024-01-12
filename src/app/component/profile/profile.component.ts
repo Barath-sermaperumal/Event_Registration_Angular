@@ -18,24 +18,6 @@ export class ProfileComponent {
   image: String = '';
 
   constructor(private authService: AuthService) {
-    this.user = this.getProfile();
-    this.dp = this.getDp();
-  }
-
-  user: AppUser = {
-    id: 0,
-    name: '',
-    username: '',
-    gender: '',
-    email: '',
-    phone: 0,
-    password: '',
-    address: '',
-    role: '',
-    image: '',
-  };
-
-  getProfile() {
     this.authService.getUser().subscribe({
       next: (Response: any) => {
         this.user = Response.data;
@@ -46,8 +28,21 @@ export class ProfileComponent {
         console.log('Name:', error.name);
       },
     });
-    return this.user;
+
+    this.authService.getDp().subscribe({
+      next: (Response: any) => {
+        this.dp = Response.data.image;
+      },
+      complete: () => {},
+      error(error: Error) {
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    });
   }
+
+  dp: String = '';
+  user: AppUser = <AppUser>{};
 
   updateProfile(profileForm: NgForm) {
     let formvalue: AppUser = profileForm.value;
@@ -62,20 +57,5 @@ export class ProfileComponent {
       },
     });
     return this.user;
-  }
-
-  dp: String = '';
-  getDp() {
-    this.authService.getDp().subscribe({
-      next: (Response: any) => {
-        this.dp = Response.data.image;
-      },
-      complete: () => {},
-      error(error: Error) {
-        console.log('Message:', error.message);
-        console.log('Name:', error.name);
-      },
-    });
-    return this.dp;
   }
 }

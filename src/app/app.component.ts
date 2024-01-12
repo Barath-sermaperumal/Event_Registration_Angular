@@ -58,17 +58,16 @@ export class AppComponent {
       this.isLoginRegister = isLoginRegister;
     });
 
-
     this.discountService.getAllDiscounts().subscribe({
-      next(Response:any){
-        localStorage.setItem("Discounts",JSON.stringify(Response.data));
+      next(Response: any) {
+        localStorage.setItem('Discounts', JSON.stringify(Response.data));
       },
       complete: () => {},
       error: (error: Error) => {
         console.log('Message:', error.message);
         console.log('Name:', error.name);
       },
-    })
+    });
   }
 
   logout(): void {

@@ -1,51 +1,52 @@
-<section class="overflow-auto container"  style="height: 80vh">
-<div class="d-flex justify-content-between mt-4 mb-4">
-  <h1>Users</h1>
-</div>
-<table class="table align-middle mb-0 bg-white container">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th class="text-center">Phone</th>
-      <th>Address</th>
-      <th>Role</th>
-      <th class="text-center">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let a of user">
-      <td>
-        <div class="d-flex align-items-center">
-          <img
-            src="{{
-              'http://localhost:8080/API/downloadFile/downloadImage/Dp/' + a.id
-            }}"
-            class="rounded-circle"
-            alt=""
-            style="width: 45px; height: 45px"
-          />
-          <div class="ms-3">
-            <p class=" mb-1">{{ a.name }}</p>
+<section class="overflow-auto container" style="height: 80vh">
+  <div class="d-flex justify-content-between mt-4 mb-4">
+    <h1>Users</h1>
+  </div>
+  <table class="table align-middle mb-0 bg-white container">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th class="text-center">Phone</th>
+        <th>Address</th>
+        <th>Role</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of user">
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              src="{{
+                'http://localhost:8080/API/downloadFile/downloadImage/Dp/' +
+                  a.id
+              }}"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+            />
+            <div class="ms-3">
+              <p class="mb-1">{{ a.name }}</p>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>
-        <p class=" mb-1">{{ a.email }}</p>
-      </td>
-      <td>
-        <p class=" mb-1 text-center">{{ a.phone }}</p>
-      </td>
-      <td>
-        <p class=" mb-1">{{ a.address }}</p>
-      </td>
-      <td>
-        <p class=" mb-1 ">{{ a.role }}</p>
-      </td>
-      <td class="text-center">
-        <i class="fa-solid fa-trash" (click)="deleteUser(a.id!)"></i>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+        <td>
+          <p class="mb-1">{{ a.email }}</p>
+        </td>
+        <td>
+          <p class="mb-1 text-center">{{ a.phone }}</p>
+        </td>
+        <td>
+          <p class="mb-1">{{ a.address }}</p>
+        </td>
+        <td>
+          <p class="mb-1">{{ a.role }}</p>
+        </td>
+        <td class="text-center">
+          <i class="fa-solid fa-trash" (click)="deleteUser(a.id!)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>

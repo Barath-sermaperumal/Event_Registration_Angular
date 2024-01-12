@@ -153,6 +153,4 @@ export class SeatingComponent {
 
     this.router.navigate(['/order'], { replaceUrl: true });
   }
-
-
 }

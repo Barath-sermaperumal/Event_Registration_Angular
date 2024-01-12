@@ -7,7 +7,13 @@
   }
 </style>
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+
+
+
 
 </head>
 <div *ngIf="!isLoggedIn" class="d-flex flex-column align-items-around">
@@ -58,17 +64,26 @@
         <a class="navbar-brand px-3 text-black" routerLink="/"
           ><img src="../assets/images/Logo.png" height="70px"
         /></a>
-        <a class="navbar-brand text-black" *ngIf="!isAdmin" routerLink="/"
-          >Home</a
-        >
-        <a class="navbar-brand text-black" *ngIf="!isAdmin" routerLink="/order"
-          >Orders</a
+        <a class="navbar-brand text-black fs-5" *ngIf="!isAdmin" routerLink="/"
+          ><b><i>Home</i></b></a
         >
         <a
-          class="navbar-brand text-black"
+          class="navbar-brand text-black fs-5"
+          *ngIf="!isAdmin"
+          routerLink="/events"
+          ><b><i>Events</i></b></a
+        >
+        <a
+          class="navbar-brand text-black fs-5"
+          *ngIf="!isAdmin"
+          routerLink="/order"
+          ><b>Orders</b></a
+        >
+        <a
+          class="navbar-brand text-black fs-5"
           *ngIf="!isAdmin"
           routerLink="/profile"
-          >Profile</a
+          ><b><i>Profile</i></b></a
         >
       </div>
       <div
@@ -154,7 +169,7 @@
     </main>
   </div>
 
-  <div *ngIf="!isAdmin" >
+  <div *ngIf="!isAdmin">
     <router-outlet></router-outlet>
   </div>
   <footer class="bg-body-tertiary text-center text-lg-start">

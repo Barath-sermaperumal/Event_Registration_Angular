@@ -3,7 +3,7 @@ import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PdfGeneratorService {
   constructor() {}
@@ -11,7 +11,7 @@ export class PdfGeneratorService {
   downloadPdf(elementId: string, filename: string): void {
     const element: HTMLElement = document.getElementById(elementId)!;
 
-    html2canvas(element).then(canvas => {
+    html2canvas(element).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
 

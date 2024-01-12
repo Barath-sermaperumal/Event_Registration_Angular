@@ -9,13 +9,16 @@ import { PdfGeneratorService } from 'src/app/service/pdf-generator-service.servi
   templateUrl: './home.component.html',
 })
 export class AdminHomeComponent {
-  constructor(private bookingService: BookingService,private pdfGeneratorService: PdfGeneratorService) {
+  constructor(
+    private bookingService: BookingService,
+    private pdfGeneratorService: PdfGeneratorService
+  ) {
     this.getReport();
   }
 
   report: Report[] = [];
-  fullReport:Report[]=[];
-  search:String="";
+  fullReport: Report[] = [];
+  search: String = '';
   options: AnimationOptions = {
     path: '/assets/not found.json',
   };
@@ -24,7 +27,7 @@ export class AdminHomeComponent {
     this.bookingService.getReport().subscribe({
       next: (Response: any) => {
         this.report = Response.data;
-        this.fullReport=Response.data;
+        this.fullReport = Response.data;
       },
       complete: () => {},
       error(error: Error) {
@@ -36,16 +39,15 @@ export class AdminHomeComponent {
   }
 
   downloadPdf(): void {
-    console.log("download component");
+    console.log('download component');
 
     this.pdfGeneratorService.downloadPdf('reportTable', 'Report');
   }
 
   //Search
-   searchReport(){
-     this.report=this.fullReport.filter((e:any) => {
-       return e.eventName.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
-     })
-   }
-
+  searchReport() {
+    this.report = this.fullReport.filter((e: any) => {
+      return e.eventName.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
+    });
+  }
 }

@@ -131,7 +131,7 @@ export class CategoryComponent {
     }
   }
 
-  resetdata(form:NgForm){
+  resetdata(form: NgForm) {
     form.resetForm();
   }
 }

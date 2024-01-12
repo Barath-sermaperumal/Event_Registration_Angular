@@ -42,7 +42,7 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   { path: 'notFound', component: NotFoundComponent },
-  { path: 'events', component: EventsComponent, canActivate: [authGuard],}
+  { path: 'events', component: EventsComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({

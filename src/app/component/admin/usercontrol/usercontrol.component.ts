@@ -25,7 +25,7 @@ export class UsercontrolComponent {
     });
   }
 
-  deleteUser(id:number){
+  deleteUser(id: number) {
     this.authService.deleteUser(id).subscribe({
       next: (response: any) => {
         this.user = response.data;

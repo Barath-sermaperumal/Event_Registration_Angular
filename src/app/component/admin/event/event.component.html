@@ -196,7 +196,9 @@
           >
             Close
           </button>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add Event</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            Add Event
+          </button>
         </div>
       </form>
     </div>
@@ -204,135 +206,160 @@
 </div>
 <!-- Modal -->
 
-<section class="overflow-auto container"  style="height: 80vh">
-<!-- Button trigger modal -->
-<div class="d-flex justify-content-between mt-4 mb-4">
-  <h1 class="col-9">Events</h1>
-  <div class="d-flex justify-content-between mb-3 col-3">
-    <button type="button" class="btn btn-primary d-flex" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
-      <i class="bi bi-funnel"></i>
-      <div class="text-white text-white">Filter</div>
-    </button>
-    <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
-    (click)="addReset()"
-  >
-    Add Event
-  </button>
+<section class="overflow-auto container" style="height: 80vh">
+  <!-- Button trigger modal -->
+  <div class="d-flex justify-content-between mt-4 mb-4">
+    <h1 class="col-9">Events</h1>
+    <div class="d-flex justify-content-between mb-3 col-3">
+      <button
+        type="button"
+        class="btn btn-primary d-flex"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        <i class="bi bi-funnel"></i>
+        <div class="text-white text-white">Filter</div>
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        (click)="addReset()"
+      >
+        Add Event
+      </button>
+    </div>
   </div>
 
-</div>
-
-      <table class="table align-middle mb-0 bg-white container">
-        <thead>
-          <tr>
-            <th class="d-flex justify-content-between">
-              Name
-              <i class="bi bi-arrow-down-up" (click)="sortByName()"></i>
-            </th>
-            <th>
-              Host
-            </th>
-            <th>
-              Date
-              <i class="bi bi-arrow-down-up mx-4" (click)="sortByDate()"></i>
-            </th>
-            <th class="d-flex justify-content-between">
-              Price
-              <i class="bi bi-arrow-down-up mx-5" (click)="sortByPrice()"></i>
-            </th>
-            <th class="text-center">
-              Available Tickets
-            </th>
-            <th class="text-center">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let a of pagedItems">
-
-            <td>
-              <div class="d-flex align-items-center">
-                <img
-                  src="{{
-                    'http://localhost:8080/API/downloadFile/downloadImage/event/' +
-                      a.id
-                  }}"
-                  class="rounded-circle"
-                  alt=""
-                  style="width: 45px; height: 45px"
-                />
-                <div class="ms-3">
-                  <p class="fw-normal mb-1">{{ a.name }}</p>
-                </div>
-              </div>
-            </td>
-            <td>
-              <p class="fw-normal mb-1">{{ a.host }}</p>
-            </td>
-            <td>
-              <p class="fw-normal mb-1">{{ a.date }}</p>
-            </td>
-            <td>
-              <p class="fw-normal mb-1">${{ a.price }}.00</p>
-            </td>
-            <td>
-              <p class="fw-normal mb-1 text-center">{{ a.availableTickets }}</p>
-            </td>
-            <td class="d-flex text-center">
-              <div class="px-1 p-3">
-                <a
-                  type="button"
-                  class="btn btn-primary btn-rounded btn-sm fw-bold"
-                  data-mdb-ripple-color="dark"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                  (click)="openModal(getAEvent(a.id!))"
-                  ><i class="fa-solid fa-pen-to-square"></i
-                ></a>
-              </div>
-              <div class="px-1 p-3">
-                <a
-                  type="submit"
-                  class="btn btn-danger btn-rounded btn-sm fw-bold"
-                  (click)="deleteEvent(a.id!)"
-                  ><i class="fa-solid fa-trash"></i
-                ></a>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-        <div *ngIf="totalPages > 1" class="p-3 d-flex justify-content-between">
-          <button class="btn btn-primary" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-          <span>Page {{ currentPage }} of {{ totalPages }}</span>
-          <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-        </div>
-      </table>
+  <table class="table align-middle mb-0 bg-white container">
+    <thead>
+      <tr>
+        <th class="d-flex justify-content-between">
+          Name
+          <i class="bi bi-arrow-down-up" (click)="sortByName()"></i>
+        </th>
+        <th>Host</th>
+        <th>
+          Date
+          <i class="bi bi-arrow-down-up mx-3" (click)="sortByDate()"></i>
+        </th>
+        <th class="d-flex justify-content-between">
+          Price
+          <i class="bi bi-arrow-down-up mx-5" (click)="sortByPrice()"></i>
+        </th>
+        <th class="text-center">Available Tickets</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of pagedItems">
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              src="{{
+                'http://localhost:8080/API/downloadFile/downloadImage/event/' +
+                  a.id
+              }}"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+            />
+            <div class="ms-3">
+              <p class="fw-normal mb-1">{{ a.name }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ a.host }}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ a.date }}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">${{ a.price }}.00</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1 text-center">{{ a.availableTickets }}</p>
+        </td>
+        <td class="d-flex text-center">
+          <div class="px-1 p-3">
+            <a
+              type="button"
+              class="btn btn-primary btn-rounded btn-sm fw-bold"
+              data-mdb-ripple-color="dark"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="openModal(getAEvent(a.id!))"
+              ><i class="fa-solid fa-pen-to-square"></i
+            ></a>
+          </div>
+          <div class="px-1 p-3">
+            <a
+              type="submit"
+              class="btn btn-danger btn-rounded btn-sm fw-bold"
+              (click)="deleteEvent(a.id!)"
+              ><i class="fa-solid fa-trash"></i
+            ></a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <div *ngIf="totalPages > 1" class="p-3 d-flex justify-content-between">
+      <button
+        class="btn btn-primary"
+        (click)="previousPage()"
+        [disabled]="currentPage === 1"
+      >
+        Previous
+      </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button
+        class="btn btn-primary"
+        (click)="nextPage()"
+        [disabled]="currentPage === totalPages"
+      >
+        Next
+      </button>
+    </div>
+  </table>
 </section>
 
 <!-- Modal -->
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form class="d-flex">
-          <input type="date" class="form-control"><br>
-          <input type="date" class="form-control">
+          <input type="date" class="form-control" /><br />
+          <input type="date" class="form-control" />
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
         <button type="button" class="btn btn-primary">Understood</button>
       </div>
     </div>
   </div>
 </div>
 <!-- Modal -->
-

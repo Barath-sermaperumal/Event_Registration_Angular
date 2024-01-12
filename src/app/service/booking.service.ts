@@ -11,7 +11,10 @@ import { urlEndpoint } from '../utils/constant';
   providedIn: 'root',
 })
 export class BookingService {
-  constructor(private http: HttpClient,private storageService:StorageService) {}
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {}
   loggedInUserId: Number = this.storageService.getLoggedInUser().id!;
 
   getReport(): Observable<AppResponse> {

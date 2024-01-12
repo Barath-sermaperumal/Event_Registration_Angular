@@ -120,7 +120,7 @@ export class AuthService {
     );
   }
 
-  deleteUser(id:number){
+  deleteUser(id: number) {
     return this.http.delete<AppResponse>(
       `http://localhost:8080/EventRegistration/API/Admin/UserControl/deleteUser/${id}`
     );

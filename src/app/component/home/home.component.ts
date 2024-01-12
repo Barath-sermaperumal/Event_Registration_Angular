@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { DiscountService } from './../../service/discount.service';
-import { Component, ViewChild,ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventService } from 'src/app/service/event.service';
 import { Event } from 'src/app/model/event';
@@ -18,8 +19,13 @@ import { AnimationOptions } from 'ngx-lottie';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-
   @ViewChild('scrollContent', { static: false }) scrollContent!: ElementRef;
+
+  @ViewChild('scrollContainer') scrollContainer!: ElementRef;
+  @ViewChild('content') content!: ElementRef;
+
+  @ViewChild('scrollContainers') scrollContainers!: ElementRef;
+  @ViewChild('contents') contents!: ElementRef;
 
   options: AnimationOptions = {
     path: '/assets/discount.json',
@@ -35,11 +41,20 @@ export class HomeComponent {
     private dataService: DataService,
     private discountService: DiscountService
   ) {
-
-
     eventService.getAllEvents().subscribe({
       next: (response: any) => {
         this.event = response.data;
+      },
+      complete: () => {},
+      error: (error: Error) => {
+        console.log('Message:', error.message);
+        console.log('Name:', error.name);
+      },
+    });
+
+    eventService.getAllTopEvents().subscribe({
+      next: (response: any) => {
+        this.topEvents = response.data;
       },
       complete: () => {},
       error: (error: Error) => {
@@ -60,6 +75,7 @@ export class HomeComponent {
     });
   }
 
+  topEvents: Event[] = [];
   totalSeats: number = 0;
   columns = 20;
   bookedSeats: String[] = [];
@@ -119,14 +135,12 @@ export class HomeComponent {
     return JSON.parse(localStorage.getItem('seatingLayout')!);
   }
 
-
   scrollLeft() {
     this.scrollContent.nativeElement.scrollLeft -= 100; // Adjust scroll amount
   }
 
   scrollRight() {
     this.scrollContent.nativeElement.scrollLeft += 200; // Adjust scroll amount
-    console.log("scrolled");
   }
 
   getDate(date: any): String {
@@ -134,60 +148,64 @@ export class HomeComponent {
   }
 
   getDiscounts(): boolean {
-    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+    let discounts: any = JSON.parse(localStorage.getItem('Discounts')!);
     let date: any = this.getDate(new Date());
-    for(let discount of discounts)
-    {
+    for (let discount of discounts) {
       let fromDate = this.getDate(discount.fromDate);
       let toDate = this.getDate(discount.toDate);
-      if(date>= fromDate && date<=toDate)
-      {
+      if (date >= fromDate && date <= toDate) {
         return true;
       }
-
     }
 
     return false;
   }
 
-  getDiscountPercent():number
-  {
-    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+  getDiscountPercent(): number {
+    let discounts: any = JSON.parse(localStorage.getItem('Discounts')!);
     let date: any = this.getDate(new Date());
-    for(let discount of discounts)
-    {
+    for (let discount of discounts) {
       let fromDate = this.getDate(discount.fromDate);
       let toDate = this.getDate(discount.toDate);
-      if(date>= fromDate && date<=toDate)
-      {
+      if (date >= fromDate && date <= toDate) {
         return discount.discount;
       }
-
     }
     return 0;
   }
 
-  getDiscountPrice(price:number):number{
-    let discountPercent:number = this.getDiscountPercent();
-    return (price-(discountPercent/100)*price);
+  getDiscountPrice(price: number): number {
+    let discountPercent: number = this.getDiscountPercent();
+    return price - (discountPercent / 100) * price;
   }
 
-  getDiscountDescription():String
-  {
-    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+  getDiscountDescription(): String {
+    let discounts: any = JSON.parse(localStorage.getItem('Discounts')!);
     let date: any = this.getDate(new Date());
 
-    for(let discount of discounts)
-    {
+    for (let discount of discounts) {
       let fromDate = this.getDate(discount.fromDate);
       let toDate = this.getDate(discount.toDate);
-      console.log(date,fromDate,toDate);
+      console.log(date, fromDate, toDate);
 
-      if(date>= fromDate && date<=toDate)
-      {
+      if (date >= fromDate && date <= toDate) {
         return discount.description;
       }
     }
-    return "";
+    return '';
+  }
+
+  scrollCategory(distance: number) {
+    this.scrollContainer.nativeElement.scrollTo({
+      left: this.scrollContainer.nativeElement.scrollLeft + distance,
+      behavior: 'smooth',
+    });
+  }
+
+  scrollEvent(distance: number) {
+    this.scrollContainers.nativeElement.scrollTo({
+      left: this.scrollContainers.nativeElement.scrollLeft + distance,
+      behavior: 'smooth',
+    });
   }
 }

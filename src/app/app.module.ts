@@ -8,6 +8,7 @@ import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import player from 'lottie-web';
 import { LottieModule } from 'ngx-lottie';
@@ -25,6 +26,7 @@ import { UserorderComponent } from './component/userorder/userorder.component';
 import { DataService } from './service/data.service';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { EventsComponent } from './component/events/events.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function playerFactory() {
   return player;
@@ -55,6 +57,7 @@ export function playerFactory() {
     ReactiveFormsModule,
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
+    BrowserAnimationsModule,
   ],
   providers: [
     {

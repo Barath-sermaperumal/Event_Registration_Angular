@@ -82,77 +82,77 @@
 </div>
 <!-- Modal -->
 
-<section class="overflow-auto container"  style="height: 80vh">
-<div class="d-flex justify-content-between mt-4 mb-4">
-  <h1>Genres</h1>
-  <button
-    type="button"
-    class="btn btn-primary mb-3 mx-5"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
-  >
-    Add category
-  </button>
-</div>
+<section class="overflow-auto container" style="height: 80vh">
+  <div class="d-flex justify-content-between mt-4 mb-4">
+    <h1>Genres</h1>
+    <button
+      type="button"
+      class="btn btn-primary mb-3 mx-5"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Add category
+    </button>
+  </div>
 
-<table class="table align-middle mb-0 bg-white container">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Thumbnail</th>
-      <th>Genres</th>
-      <th>Event count</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let a of category" style="height: 45px;">
-      <td>
-        <div class="d-flex align-items-center">
-          <div class="ms-3">
-            <p class="fw-normal mb-1">{{ a.id }}</p>
+  <table class="table align-middle mb-0 bg-white container">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Thumbnail</th>
+        <th>Genres</th>
+        <th>Event count</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of category" style="height: 45px">
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <p class="fw-normal mb-1">{{ a.id }}</p>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>
-        <img
-          src="{{
-            'http://localhost:8080/API/downloadFile/downloadImage/' + a.id
-          }}"
-          class="rounded-circle"
-          alt=""
-          style="width: 45px; height: 45px"
-        />
-      </td>
-      <td>
-        <p class="fw-normal mb-1">{{ a.name }}</p>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">{{ a.eventsCount }}</p>
-      </td>
+        </td>
+        <td>
+          <img
+            src="{{
+              'http://localhost:8080/API/downloadFile/downloadImage/' + a.id
+            }}"
+            class="rounded-circle"
+            alt=""
+            style="width: 45px; height: 45px"
+          />
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ a.name }}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ a.eventsCount }}</p>
+        </td>
 
-      <td class="d-flex">
-        <div class="px-1 p-2">
-          <a
-            type="button"
-            class="btn btn-primary btn-rounded btn-sm fw-bold"
-            data-mdb-ripple-color="dark"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            (click)="openmodal(showCategory(a.id!))"
-            ><i class="fa-solid fa-pen-to-square"></i
-          ></a>
-        </div>
-        <div class="px-1 p-2">
-          <a
-            type="submit"
-            class="btn btn-danger btn-rounded btn-sm fw-bold"
-            (click)="deleteCategory(a.id!)"
-            ><i class="fa-solid fa-trash"></i
-          ></a>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <td class="d-flex">
+          <div class="px-1 p-2">
+            <a
+              type="button"
+              class="btn btn-primary btn-rounded btn-sm fw-bold"
+              data-mdb-ripple-color="dark"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="openmodal(showCategory(a.id!))"
+              ><i class="fa-solid fa-pen-to-square"></i
+            ></a>
+          </div>
+          <div class="px-1 p-2">
+            <a
+              type="submit"
+              class="btn btn-danger btn-rounded btn-sm fw-bold"
+              (click)="deleteCategory(a.id!)"
+              ><i class="fa-solid fa-trash"></i
+            ></a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>

@@ -24,7 +24,10 @@ export class LoginComponent {
   isLoggedIn: boolean = false;
   isLoginRegister: boolean = false;
 
-  constructor(private authService: AuthService, private eventService:EventService) {
+  constructor(
+    private authService: AuthService,
+    private eventService: EventService
+  ) {
     let a: URL = new URL(window.location.href);
     if (a.pathname === '/login' || a.pathname === '/register') {
       this.authService.isAdmin$.subscribe((isAdmin) => {
@@ -62,7 +65,7 @@ export class LoginComponent {
 
     this.eventService.getAllEvents().subscribe({
       next: (response: any) => {
-        localStorage.setItem("Events",JSON.stringify(response.data))
+        localStorage.setItem('Events', JSON.stringify(response.data));
       },
       complete: () => {},
       error: (error: Error) => {

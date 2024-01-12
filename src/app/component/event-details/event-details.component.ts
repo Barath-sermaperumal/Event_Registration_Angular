@@ -100,60 +100,50 @@ export class EventDetailsComponent {
   }
 
   getDiscounts(): boolean {
-    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+    let discounts: any = JSON.parse(localStorage.getItem('Discounts')!);
     let date: any = this.getDate(new Date());
-    for(let discount of discounts)
-    {
+    for (let discount of discounts) {
       let fromDate = this.getDate(discount.fromDate);
       let toDate = this.getDate(discount.toDate);
-      if(date>= fromDate && date<=toDate)
-      {
+      if (date >= fromDate && date <= toDate) {
         return true;
       }
-
     }
 
     return false;
   }
 
-  getDiscountPercent():number
-  {
-    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+  getDiscountPercent(): number {
+    let discounts: any = JSON.parse(localStorage.getItem('Discounts')!);
     let date: any = this.getDate(new Date());
-    for(let discount of discounts)
-    {
+    for (let discount of discounts) {
       let fromDate = this.getDate(discount.fromDate);
       let toDate = this.getDate(discount.toDate);
-      if(date>= fromDate && date<=toDate)
-      {
+      if (date >= fromDate && date <= toDate) {
         return discount.discount;
       }
-
     }
     return 0;
   }
 
-  getDiscountPrice(price:number):number{
-    let discountPercent:number = this.getDiscountPercent();
-    return (price-(discountPercent/100)*price);
+  getDiscountPrice(price: number): number {
+    let discountPercent: number = this.getDiscountPercent();
+    return price - (discountPercent / 100) * price;
   }
 
-  getDiscountDescription():String
-  {
-    let discounts : any = JSON.parse(localStorage.getItem("Discounts")!);
+  getDiscountDescription(): String {
+    let discounts: any = JSON.parse(localStorage.getItem('Discounts')!);
     let date: any = this.getDate(new Date());
 
-    for(let discount of discounts)
-    {
+    for (let discount of discounts) {
       let fromDate = this.getDate(discount.fromDate);
       let toDate = this.getDate(discount.toDate);
-      console.log(date,fromDate,toDate);
+      console.log(date, fromDate, toDate);
 
-      if(date>= fromDate && date<=toDate)
-      {
+      if (date >= fromDate && date <= toDate) {
         return discount.description;
       }
     }
-    return "";
+    return '';
   }
 }

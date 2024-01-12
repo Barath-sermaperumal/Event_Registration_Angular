@@ -58,6 +58,8 @@ body {
 .navbar-brand {
   font-size: 24px;
   font-weight: 500;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /* text */
@@ -158,15 +160,14 @@ body {
   white-space: nowrap;
 }
 
-.admindashboard{
+.admindashboard {
   overflow-y: hidden;
   height: 84vh;
 }
 
-.dashboard{
+.dashboard {
   margin-left: 2%;
 }
-
 
 .sideBarActive,
 .sideBarActive > a,
@@ -234,7 +235,6 @@ body {
 .navbar {
   background-color: #333545;
   overflow-x: hidden !important;
-
 }
 
 .header {
@@ -320,8 +320,8 @@ body {
   cursor: not-allowed; /* Change cursor for disabled seats */
 }
 
-.filter-icon{
-  cursor:pointer;
+.filter-icon {
+  cursor: pointer;
 }
 
 .scroll-container {
@@ -336,7 +336,7 @@ body {
   /* Add styles as needed */
 }
 
-.float-button{
+.float-button {
   position: fixed;
   margin-top: 70vh;
   margin-left: 73vw;
@@ -351,4 +351,13 @@ body {
   50% {
     opacity: 0;
   }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

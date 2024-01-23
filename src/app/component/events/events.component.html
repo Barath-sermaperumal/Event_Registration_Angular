@@ -7,170 +7,24 @@
           <a class="pt-3 me-2 text-muted" (click)="resetForm()">clear</a>
         </div>
 
-        <!-- Date Filters -->
-        <div
-          style="background-color: white"
-          class="card border-secondary rounded m-2 p-2 fs-6"
-        >
-          <div class="d-flex justify-content-between">
-            <i
-              class="bi bi-chevron-down m-1 mx-2"
-              data-bs-toggle="collapse"
-              data-bs-target="#DateFilter"
-              aria-expanded="false"
-              aria-controls="DateFilter"
-            ></i>
-            <p class="m-0 pt-1">Filter By Date</p>
-            <i class="bi bi-x mx-2"></i>
-          </div>
-
-          <div class="collapse" id="DateFilter">
-            <div class="card card-body">
-              <form #DateFilter="ngForm" (ngSubmit)="filterByDate(DateFilter)">
-                <input
-                  type="date"
-                  placeholder="Select date"
-                  id="fromDate"
-                  name="fromDate"
-                  class="form-control mb-2"
-                  [(ngModel)]="fromDate"
-                />
-                <input
-                  type="date"
-                  placeholder="Select date"
-                  id="toDate"
-                  name="toDate"
-                  class="form-control"
-                  [(ngModel)]="toDate"
-                />
-                <button type="submit" class="btn btn-primary">Apply</button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Price Filters -->
-        <div
-          style="background-color: white"
-          class="card border-secondary rounded m-2 p-2 fs-6"
-        >
-          <div class="d-flex justify-content-between">
-            <i
-              class="bi bi-chevron-down m-1 mx-2"
-              data-bs-toggle="collapse"
-              data-bs-target="#PriceFilter"
-              aria-expanded="false"
-              aria-controls="PriceFilter"
-            ></i>
-            <p class="m-0 pt-1">Filter By Prices</p>
-            <i class="bi bi-x mx-2"></i>
-          </div>
-          <div class="collapse" id="PriceFilter">
-            <div class="card card-body">
-              <form
-                #priceFilter="ngForm"
-                (ngSubmit)="filterByPrice(priceFilter)"
-              >
-                <label for="customRange2" class="form-label"
-                  >Select Min Price</label
-                >
-                <input
-                  type="range"
-                  class="form-range"
-                  min="{{ minLimit }}"
-                  max="{{ maxLimit }}"
-                  id="minPrice"
-                  name="minPrice"
-                  value=""
-                  [(ngModel)]="minPrice"
-                  oninput="this.nextElementSibling.value = this.value"
-                />
-                <output class="text-center"></output>
-                <br />
-                <label for="customRange2" class="form-label"
-                  >Select Max Price</label
-                >
-                <input
-                  type="range"
-                  class="form-range"
-                  min="{{ minLimit }}"
-                  max="{{ maxLimit }}"
-                  id="maxPrice"
-                  name="maxPrice"
-                  value=""
-                  [(ngModel)]="maxPrice"
-                  oninput="this.nextElementSibling.value = this.value"
-                />
-                <output class="text-center"></output>
-                <br />
-                <button type="submit" class="btn btn-primary">Apply</button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Venue Filters -->
-        <div
-          style="background-color: white"
-          class="card border-secondary rounded m-2 p-2 fs-6"
-        >
-          <div class="d-flex justify-content-between">
-            <i
-              class="bi bi-chevron-down m-1 mx-2"
-              data-bs-toggle="collapse"
-              data-bs-target="#VenueFilter"
-              aria-expanded="false"
-              aria-controls="VenueFilter"
-            ></i>
-            <p class="m-0 pt-1">Filter By Venues</p>
-            <i class="bi bi-x mx-2"></i>
-          </div>
-
-          <div class="collapse" id="VenueFilter">
-            <div class="card card-body">
-              <a
-                class="btn btn-secondary m-1"
-                *ngFor="let a of getUniqueVenues()"
-                (click)="filterByVenues(a.venue)"
-                >{{ a.venue }}</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Categories Filters -->
-        <div
-          style="background-color: white"
-          class="card border-secondary rounded m-2 p-2 fs-6"
-        >
-          <div class="d-flex justify-content-between">
-            <i
-              class="bi bi-chevron-down m-1 mx-2"
-              data-bs-toggle="collapse"
-              data-bs-target="#CategoryFilter"
-              aria-expanded="false"
-              aria-controls="CategoryFilter"
-            ></i>
-            <p class="m-0 pt-1">Filter By Category</p>
-            <i class="bi bi-x mx-2"></i>
-          </div>
-
-          <div class="collapse" id="CategoryFilter">
-            <div class="card card-body">
-              <a
-                class="btn btn-secondary m-1"
-                *ngFor="let a of categories"
-                (click)="filterByCategory(a.id!)"
-                >{{ a.name }}</a
-              >
-            </div>
-          </div>
-        </div>
-
-
         <div class="card p-4 full_filter">
+          <b><i>Sort Options</i></b><br>
+          <a class="btn btn-primary mb-2" (click)="sortByName()"
+            >Sort by name</a
+          >
+          <a class="btn btn-primary mb-2" (click)="sortByPrice()"
+            >Sort by price</a
+          >
+          <a class="btn btn-primary mb-2" (click)="sortByDate()"
+            >Sort by date</a
+          >
+          <br>
+
+          <b><i>Filter Options</i></b><br>
           <form #FilterForm="ngForm" (change)="onChange(FilterForm)">
-            <label for="fromDate" class="form-label">Select from date</label>
+            <label for="fromDate" class="form-label fw-bold"
+              >Select from date</label
+            >
             <input
               type="date"
               placeholder="Select date"
@@ -180,7 +34,9 @@
               [(ngModel)]="fromDate"
               [min]="fromDate"
             />
-            <label for="toDate" class="form-label">Select to date</label>
+            <label for="toDate" class="form-label fw-bold"
+              >Select to date</label
+            >
             <input
               type="date"
               placeholder="Select date"
@@ -191,38 +47,33 @@
               [min]="fromDate"
             />
 
-            <label for="minPrice" class="form-label">Select Min Price</label>
-            <input
-              type="range"
-              class="form-range"
-              min="{{ minLimit }}"
-              max="{{ maxLimit }}"
-              id="minPrice"
-              name="minPrice"
-              value=""
-              [(ngModel)]="minPrice"
-              oninput="this.nextElementSibling.value = this.value"
-            />
-            <output class="text-center"></output>
-            <br />
-            <label for="maxPrice" class="form-label">Select Max Price</label>
-            <input
-              type="range"
-              class="form-range"
-              min="{{ minLimit }}"
-              max="{{ maxLimit }}"
-              id="maxPrice"
-              name="maxPrice"
-              value=""
-              [(ngModel)]="maxPrice"
-              oninput="this.nextElementSibling.value = this.value"
-            />
-            <output class="text-center"></output>
-            <br />
+            <mat-slider
+              [min]="minLimit"
+              [max]="maxLimit"
+              [discrete]="true"
+              [showTickMarks]="true"
+              thumbLabel
+            >
+              <input
+                matSliderStartThumb
+                [(ngModel)]="minPrice"
+                id="minPrice"
+                name="minPrice"
+                value={{minLimit}}
+              />
+              <input
+                matSliderEndThumb
+                [(ngModel)]="maxPrice"
+                id="maxPrice"
+                name="maxPrice"
+                value={{maxLimit}}
+              />
+            </mat-slider>
+            <br>
 
-            Select Venues
+            <b>Select Venues</b>
             <div
-              class="form-control mb-2"
+              class="form-control mt-2 mb-2"
               *ngFor="let a of getUniqueVenues()"
             >
               <label>
@@ -231,38 +82,23 @@
                   name="venues"
                   id="venues"
                   (change)="onVenueCheckboxChange($event, a.id!)"
-                /><span class="text-center">{{ a.venue }}</span>
+                /><span class="text-center px-2">{{ a.venue }}</span>
               </label>
             </div>
 
-            Select Categories
-            <div class="form-control mb-2" *ngFor="let a of categories">
+            <b>Select Categories</b>
+            <div class="form-control mt-2 mb-2" *ngFor="let a of categories">
               <label>
                 <input
                   type="checkbox"
                   name="categories"
                   id="categories"
                   (change)="onCategoryCheckboxChange($event, a.id!)"
-                /><span class="text-center">{{ a.name }}</span>
+                /><span class="text-center px-2">{{ a.name }}</span>
               </label>
             </div>
           </form>
         </div>
-
-        <p>
-          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-            Toggle width collapse
-          </button>
-        </p>
-        <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body" style="width: 300px;">
-              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
-            </div>
-          </div>
-        </div>
-
-
       </div>
     </div>
 

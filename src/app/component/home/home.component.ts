@@ -186,7 +186,6 @@ export class HomeComponent {
     for (let discount of discounts) {
       let fromDate = this.getDate(discount.fromDate);
       let toDate = this.getDate(discount.toDate);
-      console.log(date, fromDate, toDate);
 
       if (date >= fromDate && date <= toDate) {
         return discount.description;

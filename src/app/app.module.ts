@@ -27,6 +27,8 @@ import { DataService } from './service/data.service';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { EventsComponent } from './component/events/events.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgChartsModule } from 'ng2-charts';
+import {MatSliderModule} from '@angular/material/slider';
 
 export function playerFactory() {
   return player;
@@ -58,6 +60,8 @@ export function playerFactory() {
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
     BrowserAnimationsModule,
+    NgChartsModule,
+    MatSliderModule
   ],
   providers: [
     {

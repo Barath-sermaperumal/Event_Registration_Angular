@@ -284,4 +284,42 @@ export class EventsComponent {
     return `${today.getFullYear()}-${month}-${day}`;
   }
 
+    //sorting functions
+    nameSortDirection = 'desc';
+    sortByName() {
+      // Reverse the sort direction if the same column is clicked again
+      this.nameSortDirection = this.nameSortDirection === 'asc' ? 'desc' : 'asc';
+      this.resultData.sort((a, b) => {
+        const modifier = this.nameSortDirection === 'asc' ? 1 : -1;
+        this.nameSortDirection;
+        return a.name.localeCompare(b.name.toString()) * modifier;
+      });
+    }
+
+    priceSortDirection = 'desc';
+    sortByPrice() {
+      if (this.priceSortDirection === 'desc') {
+        this.resultData = this.resultData.sort((a, b) => a.price! - b.price!);
+        this.priceSortDirection = 'asc';
+      } else {
+        this.resultData = this.resultData.sort((a, b) => b.price! - a.price!);
+        this.priceSortDirection = 'desc';
+      }
+    }
+
+    dateSortDirection = 'desc';
+    sortByDate() {
+      this.dateSortDirection = this.dateSortDirection === 'asc' ? 'desc' : 'asc';
+      this.resultData.sort((a, b) => {
+        const formattedDateA = new Date(a.date.toString());
+        const formattedDateB = new Date(b.date.toString());
+        const modifier = this.dateSortDirection === 'asc' ? 1 : -1;
+        this.dateSortDirection;
+        return (
+          (<any>new Date(formattedDateA) - <any>new Date(formattedDateB)) *
+          modifier
+        );
+      });
+    }
+
 }

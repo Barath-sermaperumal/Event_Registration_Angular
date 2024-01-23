@@ -16,6 +16,12 @@ export class AdminHomeComponent {
     this.getReport();
   }
 
+  public pieChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false
+    // Add more options as needed
+  };
+
   report: Report[] = [];
   fullReport: Report[] = [];
   search: String = '';
